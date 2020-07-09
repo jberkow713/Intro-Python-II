@@ -75,7 +75,7 @@ while True:
         player.room = player.room.n_to
         print(player.room.description)
 
-        users_choice = input("Please choose north, east, west, or south: ")
+        #users_choice = input("Please choose north, east, west, or south: ")
 
         if users_choice =="north":
             player.room = player.room.n_to

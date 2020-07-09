@@ -88,6 +88,7 @@ while True:
 
 
     elif users_choice != "north":
+        
             current_room = Room1 
             print("Please choose a new direction")
             
