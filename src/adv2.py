@@ -59,11 +59,13 @@ room['treasure'].s_to = room['narrow']
 #Room5 = 'the Treasure Chamber'  
 
 name = input("ENTER YOUR NAME!") 
-player = Player(name=name, room=room["outside"])
+player = Player(name, room['outside'])
+print(player.room.description)
 
 print(f"Welcome {player.name}")
 
 while True:
+
   
 
 
@@ -78,19 +80,31 @@ while True:
     
     
 
-    users_choice = input("Please choose north, east, west, or south: ")
-        
+    users_choice = input("Please choose north, east, west, or south:")
+    
     if users_choice == "q":
         print("Your journey has ended!")
         break
-        
-    if users_choice == "north":
-            
-        player.room = player.room.n_to
+
+    if player.room == room['outside']:
         print(player.room.description)
+
+        if users_choice == "north":
+            player.room = player.room.n_to
+            print(player.room.description)
     
-    elif users_choice != "north":
-        print("Choose a new path!")
+        if users_choice == "south":
+            print("Choose a new path")
+        elif users_choice == "east":
+            print("Choose a new path")  
+        elif users_choice == "west":
+            print("Choose a new path")      
+        else:
+            print("Choose a new path")
+
+
+    elif player.room ==room['foyer']:
+
 
         if users_choice == "north":
             player.room = player.room.n_to
@@ -101,8 +115,57 @@ while True:
         elif users_choice == "east":
             player.room = player.room.e_to
             print(player.room.description)
+        elif users_choice == "west":
+            print("Choose a new path!")
+        else:
+            print("Choose a new path!")    
+
+    elif player.room ==room['overlook']:
+
+        if users_choice == "south":
+           player.room = player.room.s_to
+           print(player.room.description)
+        elif users_choice == "north":
+            print("Choose a new path!")
+        elif users_choice == "west":
+            print("Choose a new path!")
+        elif users_choice == "east":
+            print("Choose a new path!")
+        else:
+            print("Choose a new path!")  
+
+    elif player.room ==room['narrow']:
+
+        if users_choice == "north":
+            player.room = player.room.n_to
+            print(player.room.description)
+        elif users_choice == "west":
+            player.room = player.room.w_to
+            print(player.room.description)
+        elif users_choice == "east":
+            print("Choose a new path!")
+        elif users_choice == "south":
+            print("Choose a new path!")  
         else:
             print("Choose a new path!")
+
+    elif player.room ==room['treasure']:
+        if users_choice == "south":
+            player.room = player.room.s_to
+            print(player.room.description)
+
+        elif users_choice == "north":
+            print("Choose a new path!")
+
+        elif users_choice == "west":
+            print("Choose a new path!")
+
+        elif users_choice == "east":
+            print("Choose a new path!") 
+        else:
+            print("Choose a new path!")                                
+
+
 
             
                           
