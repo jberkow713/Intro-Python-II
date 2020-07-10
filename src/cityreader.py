@@ -30,26 +30,45 @@ cities = []
 
 import csv
 def cityreader(cities=[]):
-  with open('cities.csv', newline='') as csvfile:
-    cityreader = csv.reader(csvfile, delimiter=' ', quotechar='|' )
-    for row in cityreader:
-      print(row)
-  # TODO Implement the functionality to read from the 'cities.csv' file
-  # For each city record, create a new City instance and add it to the 
-  # `cities` list
+    with open('cities.csv', newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        next(reader)
+        for row in reader:
+            obs = City(row[0], float(row[3]), float(row[4]))
+            cities.append(obs)
+ 
     
-    return cities
+    
+        return(cities)
 
-cityreader(cities)
-# Having trouble figuring how to store this information in City instances with only name, lat and lon
-# Print the list of cities (name, lat, lon), 1 record per line.
+cityreader(cities)  
 
-# tried to get the list to only print name, lat, lon, through some
-# kind of list comprehension, but can not figure this part out
+#cities = []
+for i in (cities):
+    
+    print(i)    
 
-e = [(City.name, City.lat, City.lng) for City in cities]
+#print(cities)
+#s = City(x[0], x[1], x[2] in cities)
+   # schedules.append(s)
 
-print(e)
+
+#f = [City(x) for x in cities]
+#f
+#print(f)
+#a = City("boston", 23, 123)
+
+#objs = [City() for i in cities]
+#print(objs)
+
+
+
+
+
+#for City in cities:
+
+
+#print(e)
 
 # STRETCH GOAL!
 #
@@ -80,14 +99,6 @@ print(e)
 # Tucson: (32.1558,-110.8777)
 # Salt Lake City: (40.7774,-111.9301)
 
-# TODO Get latitude and longitude values from the user
+# Get latitude and longitude values from the user
 
-#def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
-  # within will hold the cities that fall within the specified region
- # within = []
-
-  # TODO Ensure that the lat and lon valuse are all floats
-  # Go through each city and check to see if it falls within 
-  # the specified coordinates.
-
-  #return within
+#def cityreader_stre

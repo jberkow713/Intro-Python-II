@@ -46,7 +46,7 @@ humans = [
 
 print("Starts with D:")
 
-a = [x for x in humans if x.name[0] == "D"]
+a = [x.name for x in humans if x.name[0] == "D"]
 
 
 print(a)
@@ -57,7 +57,7 @@ print(a)
 
 print("Ends with e:")
 
-b = [x for x in humans if x.name.endswith("e")]
+b = [x.name for x in humans if x.name.endswith("e")]
 
 print(b)
 
@@ -68,7 +68,7 @@ print(b)
 
 print("Starts between C and G, inclusive:")
 first_letters = ['C','D','E', 'F', 'G']
-c = [x for x in humans if (x.name[0] in first_letters)]
+c = [x.name for x in humans if (x.name[0] in first_letters)]
 
 
 print(c)
