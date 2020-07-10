@@ -17,18 +17,21 @@
 #     pass
 #
 # Put a comment noting which class is the base class
-
-class Starship:
+class Vehicle:  
     pass
 
-class FlightVehicle(Starship):
+class FlightVehicle(Vehicle):
     pass
+
+class Starship(FlightVehicle):
+    pass
+
+
 
 class Airplane(FlightVehicle):
     pass
 
-class Vehicle(Starship):  
-    pass
+
 
 
 class GroundVehicle(Vehicle):
