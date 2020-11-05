@@ -4,22 +4,19 @@ from room import Room
 
 
 class Player:
-    def __init__(self, name, room, item=[]):
+    def __init__(self, name, level, magic_level, hitpoints, room, item=[]):
         self.room = room 
         self.name = name
         self.item = item
-        
-
+        self.level = level
+        self.hitpoints = hitpoints
+        self.magic_level = magic_level
     def __str__(self):
         return str(self.__class__) + ": " + str(self.__dict__)  
 
     
 
-    def add_item(self, item_choice):
-          
-        self.item.append(item_choice) 
-
-
+   
 
 
 
