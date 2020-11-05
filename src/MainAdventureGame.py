@@ -63,17 +63,35 @@ while True:
             print(f"You find {player.room.item}")
             item_choice = input("Which items will you pickup?: \n")
             
-            if item_choice in player.room.item:
-                    print(f"You have added {item_choice}\n")
-                    player.item.append(item_choice)
+            if item_choice in player.room.item and item_choice not in player.item:
+            
+                    if len(player.item) >= 3:
+                        print("You currently have too many items in your bag")
+                        print(f"You currently possess {player.item}")
+                        swap_choice = input("Please choose an item to swap from your bag: ")
+                        if swap_choice in player.item:
+                            player.item.remove(swap_choice)
+                            player.item.append(item_choice)
+                            
+                            print(f"You currently possess {player.item}")
+                        else:
+                            print("You did not properly select an item to swap...better luck next time!")    
+                    
+                    elif len(player.item) <3:
+                        print(f"You have added {item_choice}\n")
+                        player.item.append(item_choice)
+                        print(f"You currently possess {player.item}")
+            elif item_choice in player.room.item and item_choice in player.item:
+                print("You may only carry one of that item")
+                continue
             else:
                 print("You did not choose a proper item, better luck next time!")
-                print(f"You now have {player.item}")
+                print(f"You currently possess {player.item}")
                 continue   
             
             
             
-            print(f"You now have {player.item}")
+            
         else:
             print('You can not go in that direction!')
             continue
@@ -85,18 +103,34 @@ while True:
             print(f"You find {player.room.item}")
             item_choice = input("Which items will you pickup?: \n")
             
-            if item_choice in player.room.item:
-                    print(f"You have added {item_choice}\n")
-                    player.item.append(item_choice)
+            if item_choice in player.room.item and item_choice not in player.item:
+            
+                    if len(player.item) >= 3:
+                        print("You currently have too many items in your bag")
+                        print(f"You currently possess {player.item}")
+                        swap_choice = input("Please choose an item to swap from your bag: ")
+                        if swap_choice in player.item:
+                            player.item.remove(swap_choice)
+                            player.item.append(item_choice)
+                            
+                            print(f"You currently possess {player.item}")
+                        else:
+                            print("You did not properly select an item to swap...better luck next time!")    
+                    
+                    elif len(player.item) <3:
+                        print(f"You have added {item_choice}\n")
+                        player.item.append(item_choice)
+                        print(f"You currently possess {player.item}")
+            elif item_choice in player.room.item and item_choice in player.item:
+                print("You may only carry one of that item")
+                continue
             else:
                 print("You did not choose a proper item, better luck next time!")
-                print(f"You now have {player.item}")
+                print(f"You currently possess {player.item}")
                 continue   
             
+                                    
             
-            
-            
-            print(f"You now have {player.item}")
         else:
             print('You can not go in that direction!')
             continue
@@ -110,12 +144,30 @@ while True:
             print(f"You find {player.room.item}")
             item_choice = input("Which items will you pickup?: \n")
             
-            if item_choice in player.room.item:
-                    print(f"You have added {item_choice}\n")
-                    player.item.append(item_choice)
+            if item_choice in player.room.item and item_choice not in player.item:
+            
+                    if len(player.item) >= 3:
+                        print("You currently have too many items in your bag")
+                        print(f"You currently possess {player.item}")
+                        swap_choice = input("Please choose an item to swap from your bag: ")
+                        if swap_choice in player.item:
+                            player.item.remove(swap_choice)
+                            player.item.append(item_choice)
+                            
+                            print(f"You currently possess {player.item}")
+                        else:
+                            print("You did not properly select an item to swap...better luck next time!")    
+                    
+                    elif len(player.item) <3:
+                        print(f"You have added {item_choice}\n")
+                        player.item.append(item_choice)
+                        print(f"You currently possess {player.item}")
+            elif item_choice in player.room.item and item_choice in player.item:
+                print("You may only carry one of that item")
+                continue
             else:
                 print("You did not choose a proper item, better luck next time!")
-                print(f"You now have {player.item}")
+                print(f"You currently possess {player.item}")
                 continue   
         else:
             print('You can not go in that direction!')
@@ -128,12 +180,30 @@ while True:
             print(f"You find {player.room.item}")
             item_choice = input("Which items will you pickup?: \n")
             
-            if item_choice in player.room.item:
-                    print(f"You have added {item_choice}\n")
-                    player.item.append(item_choice)
+            if item_choice in player.room.item and item_choice not in player.item:
+            
+                    if len(player.item) >= 3:
+                        print("You currently have too many items in your bag")
+                        print(f"You currently possess {player.item}")
+                        swap_choice = input("Please choose an item to swap from your bag: ")
+                        if swap_choice in player.item:
+                            player.item.remove(swap_choice)
+                            player.item.append(item_choice)
+                            
+                            print(f"You currently possess {player.item}")
+                        else:
+                            print("You did not properly select an item to swap...better luck next time!")    
+                    
+                    elif len(player.item) <3:
+                        print(f"You have added {item_choice}\n")
+                        player.item.append(item_choice)
+                        print(f"You currently possess {player.item}")
+            elif item_choice in player.room.item and item_choice in player.item:
+                print("You may only carry one of that item")
+                continue
             else:
                 print("You did not choose a proper item, better luck next time!")
-                print(f"You now have {player.item}")
+                print(f"You currently possess {player.item}")
                 continue   
         else:
             print('You can not go in that direction!')
