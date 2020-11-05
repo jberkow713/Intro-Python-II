@@ -3,22 +3,25 @@ from player import Player
 # Declare all the rooms
 
 room = {
-    'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons", []),
+'outside':  Room("Outside Cave Entrance",
+                     "North of you, the cave mount beckons", ["Body Armor" ], ["No enemies at all..."]),
 
-    'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east.""", ["sword", "helmet"]),
+'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
+passages run north and east.""", ["sword", "helmet"], ["Snakes...why did it have to be snakes?"]),
 
-    'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
+'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm.""", ["key", "bomb"]),
+the distance, but there is no way across the chasm.""", ["key", "bomb"], ["Three scary goblins"]),
 
-    'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air.""", ["bow", "arrows"]),
+'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
+to north. The smell of gold permeates the air.""", ["bow", "arrows"], ["A group of Mummies"]),
 
-    'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
+'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south.""", ["diamond", "Arkenstone"]),
+earlier adventurers. """, ["diamond", "Arkenstone"], ["A giant Red Dragon"]),
+
+'Cave Exit': Room("Cave Exit", """You have free solod your way out of the treasure room to the opening above, 
+the sun greets you as you claw your way through the rocks to a giant open field""", ["Spear"])
 }
 
 
@@ -32,12 +35,13 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+room['treasure'].n_to = room['Cave Exit']
 
 
 
 
 
-Link = Player(name='Link', room=room["outside"], item=[])
+Link = Player(name='Link', room=room["outside"], item=[]) 
 #print(Link)
 
 
@@ -51,6 +55,7 @@ while True:
 
     print('----------------------------------------')
     users_choice = input("Please choose north, east, west, or south: ")
+    print('----------------------------------------')
         
     if users_choice == "q":
         print("Your journey has ended!")
@@ -60,6 +65,10 @@ while True:
         if player.room.n_to is not None:
             player.room = player.room.n_to
             print(player.room.description)
+            print('----------------------------------------')
+            if len(player.room.enemies) >=1:
+                print(f"You encounter {player.room.enemies}")
+                print('----------------------------------------')
             print(f"You find {player.room.item}")
             item_choice = input("Which items will you pickup?: \n")
             
@@ -100,6 +109,10 @@ while True:
         if player.room.s_to is not None:
             player.room = player.room.s_to
             print(player.room.description)
+            print('----------------------------------------')
+            if len(player.room.enemies) >=1:
+                print(f"You encounter {player.room.enemies}")
+                print('----------------------------------------')
             print(f"You find {player.room.item}")
             item_choice = input("Which items will you pickup?: \n")
             
@@ -141,6 +154,10 @@ while True:
         if player.room.w_to is not None:
             player.room = player.room.w_to
             print(player.room.description)
+            print('----------------------------------------')
+            if len(player.room.enemies) >=1:
+                print(f"You encounter {player.room.enemies}")
+                print('----------------------------------------')
             print(f"You find {player.room.item}")
             item_choice = input("Which items will you pickup?: \n")
             
@@ -177,6 +194,10 @@ while True:
         if player.room.e_to is not  None:
             player.room = player.room.e_to
             print(player.room.description)
+            print('----------------------------------------')
+            if len(player.room.enemies) >=1:
+                print(f"You encounter {player.room.enemies}")
+                print('----------------------------------------')
             print(f"You find {player.room.item}")
             item_choice = input("Which items will you pickup?: \n")
             
