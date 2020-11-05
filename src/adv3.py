@@ -4,21 +4,21 @@ from player import Player
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons", []),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", ["sword", "helmet"]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""", ["key", "bomb"]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
+to north. The smell of gold permeates the air.""", ["bow", "arrows"]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
+earlier adventurers. The only exit is to the south.""", ["diamond", "Arkenstone"]),
 }
 
 
@@ -36,35 +36,20 @@ room['treasure'].s_to = room['narrow']
 
 
 
-#
-# Main
-#
-#Link = Player('outside', 'knight', 100)
+
+Link = Player(name='Link', room=room["outside"], item=[])
 #print(Link)
 
 
-# Make a new player object that is currently in the 'outside' room.
 
-# Write a loop that:
-
-
- # want to print current room and current description based on where the player is
- # so everytime player moves into new room, prints room player is in, and description of room
-
-#current_room = []  
-#Room1 = 'Outside Cave Entrance'
-#Room2 = 'Foyer'
-#Room3 = 'Grand Overlook'
-#Room4 = 'A Narrow Passage'
-#Room5 = 'the Treasure Chamber'  
-
-name = input("ENTER YOUR NAME!") 
-player = Player(name=name, room=room["outside"])
-
+# name = input("ENTER YOUR NAME!") 
+# player = Player(name=name, room=room["outside"])
+player = Link
 print(f"Welcome {player.name}")
 
 while True:
 
+    print('----------------------------------------')
     users_choice = input("Please choose north, east, west, or south: ")
         
     if users_choice == "q":
@@ -72,31 +57,86 @@ while True:
         break
         
     if users_choice == "north":
-        player.room = player.room.n_to
-        print(player.room.description)
-
-        #users_choice = input("Please choose north, east, west, or south: ")
-
-        if users_choice =="north":
+        if player.room.n_to is not None:
             player.room = player.room.n_to
             print(player.room.description)
-
-            #users_choice = input("Please choose north, east, west, or south: ") 
-
-            if users_choice =="south":
-                player.room = player.room.s_to
-                print(player.room.description)
-            elif users_choice =="north":
-                print("Please choose again!")
-                #users_choice = input("Please choose north, east, west, or south: ") 
-            elif users_choice =="east":
-                print("Please choose again!") 
-                #users_choice = input("Please choose north, east, west, or south: ") 
-            elif users_choice =="west":
-                print("Please choose again!")
-                #users_choice = input("Please choose north, east, west, or south: ") 
+            print(f"You find {player.room.item}")
+            item_choice = input("Which items will you pickup?: \n")
+            
+            if item_choice in player.room.item:
+                    print(f"You have added {item_choice}\n")
+                    player.item.append(item_choice)
             else:
-                print("Please choose again!")
-                #users_choice = input("Please choose north, east, west, or south: ") 
+                print("You did not choose a proper item, better luck next time!")
+                print(f"You now have {player.item}")
+                continue   
+            
+            
+            
+            print(f"You now have {player.item}")
+        else:
+            print('You can not go in that direction!')
+            continue
+   
+    if users_choice == "south":
+        if player.room.s_to is not None:
+            player.room = player.room.s_to
+            print(player.room.description)
+            print(f"You find {player.room.item}")
+            item_choice = input("Which items will you pickup?: \n")
+            
+            if item_choice in player.room.item:
+                    print(f"You have added {item_choice}\n")
+                    player.item.append(item_choice)
+            else:
+                print("You did not choose a proper item, better luck next time!")
+                print(f"You now have {player.item}")
+                continue   
+            
+            
+            
+            
+            print(f"You now have {player.item}")
+        else:
+            print('You can not go in that direction!')
+            continue
+          
 
+             
+    if users_choice == "west":
+        if player.room.w_to is not None:
+            player.room = player.room.w_to
+            print(player.room.description)
+            print(f"You find {player.room.item}")
+            item_choice = input("Which items will you pickup?: \n")
+            
+            if item_choice in player.room.item:
+                    print(f"You have added {item_choice}\n")
+                    player.item.append(item_choice)
+            else:
+                print("You did not choose a proper item, better luck next time!")
+                print(f"You now have {player.item}")
+                continue   
+        else:
+            print('You can not go in that direction!')
+            continue
+             
+    if users_choice == "east":
+        if player.room.e_to is not  None:
+            player.room = player.room.e_to
+            print(player.room.description)
+            print(f"You find {player.room.item}")
+            item_choice = input("Which items will you pickup?: \n")
+            
+            if item_choice in player.room.item:
+                    print(f"You have added {item_choice}\n")
+                    player.item.append(item_choice)
+            else:
+                print("You did not choose a proper item, better luck next time!")
+                print(f"You now have {player.item}")
+                continue   
+        else:
+            print('You can not go in that direction!')
+            continue
+        
                     
