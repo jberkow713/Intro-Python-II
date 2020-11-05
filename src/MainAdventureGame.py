@@ -1,6 +1,7 @@
 from room import Room
 from player import Player 
 # Declare all the rooms
+import random
 
 room = {
 'outside':  Room("Outside Cave Entrance",
@@ -90,6 +91,44 @@ while True:
             if len(player.room.enemies) >=1:
                 print(f" {player.room.enemies}")
                 print('----------------------------------------')
+                
+                if player.room.enemies  == ["Snakes...why did it have to be snakes?"]:
+                    
+                    attack = (random.randint(0, 10))
+                    print(f"You prepare to battle the snakes, with {attack} power!")
+                    if attack >= 2:
+                        print("You have defeated the Snakes, you may continue on!")
+                    else:
+                        print("You have died to a few wimpy snakes!")
+                        break     
+                elif player.room.enemies == ["Out of nowhere come three scary goblins"]:
+                    attack = (random.randint(0, 20))
+                    print(f"You prepare to battle the Goblins, with {attack} power!")
+                    if attack > 7:
+                        print("You have defeated the Goblins")
+                    else:
+                        print("The Goblins have smashed you to pieces!")
+                        break    
+                elif player.room.enemies == ["A group of Mummies lumber towards you"]:
+                    attack = (random.randint(0, 25))
+                    print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                    if attack > 10:
+                        print("You have defeated the Mummies!")
+                    else:
+                        print("The mummies have entombed you for eternity!")
+                        break  
+                elif player.room.enemies == ["A giant Red Dragon approaches"]:
+                    attack = (random.randint(0, 50))
+                    print(f"You prepare to battle the giant beast, with {attack} power!")
+                    if attack > 35:
+                        print("You have defeated the Dragon!")
+                    else:
+                        print("Fire reigns down upon your head, you have been engulfed in flames!")
+                        break  
+
+
+
+
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
             
@@ -135,6 +174,42 @@ while True:
             if len(player.room.enemies) >=1:
                 print(f" {player.room.enemies}")
                 print('----------------------------------------')
+
+                if player.room.enemies  == ["Snakes...why did it have to be snakes?"]:
+                    
+                    attack = (random.randint(0, 10))
+                    print(f"You prepare to battle the snakes, with {attack} power!")
+                    if attack >= 2:
+                        print("You have defeated the Snakes, you may continue on!")
+                    else:
+                        print("You have died to a few wimpy snakes!")
+                        break     
+                elif player.room.enemies == ["Out of nowhere come three scary goblins"]:
+                    attack = (random.randint(0, 20))
+                    print(f"You prepare to battle the Goblins, with {attack} power!")
+                    if attack > 7:
+                        print("You have defeated the Goblins")
+                    else:
+                        print("The Goblins have smashed you to pieces!")
+                        break    
+                elif player.room.enemies == ["A group of Mummies lumber towards you"]:
+                    attack = (random.randint(0, 25))
+                    print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                    if attack > 10:
+                        print("You have defeated the Mummies!")
+                    else:
+                        print("The mummies have entombed you for eternity!")
+                        break  
+                elif player.room.enemies == ["A giant Red Dragon approaches"]:
+                    attack = (random.randint(0, 50))
+                    print(f"You prepare to battle the giant beast, with {attack} power!")
+                    if attack > 35:
+                        print("You have defeated the Dragon!")
+                    else:
+                        print("Fire reigns down upon your head, you have been engulfed in flames!")
+                        break  
+
+
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
             
@@ -182,6 +257,40 @@ while True:
             if len(player.room.enemies) >=1:
                 print(f" {player.room.enemies}")
                 print('----------------------------------------')
+
+                if player.room.enemies  == ["Snakes...why did it have to be snakes?"]:
+                    
+                    attack = (random.randint(0, 10))
+                    print(f"You prepare to battle the snakes, with {attack} power!")
+                    if attack >= 2:
+                        print("You have defeated the Snakes, you may continue on!")
+                    else:
+                        print("You have died to a few wimpy snakes!")
+                        break     
+                elif player.room.enemies == ["Out of nowhere come three scary goblins"]:
+                    attack = (random.randint(0, 20))
+                    print(f"You prepare to battle the Goblins, with {attack} power!")
+                    if attack > 7:
+                        print("You have defeated the Goblins")
+                    else:
+                        print("The Goblins have smashed you to pieces!")
+                        break    
+                elif player.room.enemies == ["A group of Mummies lumber towards you"]:
+                    attack = (random.randint(0, 25))
+                    print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                    if attack > 10:
+                        print("You have defeated the Mummies!")
+                    else:
+                        print("The mummies have entombed you for eternity!")
+                        break  
+                elif player.room.enemies == ["A giant Red Dragon approaches"]:
+                    attack = (random.randint(0, 50))
+                    print(f"You prepare to battle the giant beast, with {attack} power!")
+                    if attack > 35:
+                        print("You have defeated the Dragon!")
+                    else:
+                        print("Fire reigns down upon your head, you have been engulfed in flames!")
+                        break  
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
             
@@ -222,6 +331,40 @@ while True:
             if len(player.room.enemies) >=1:
                 print(f" {player.room.enemies}")
                 print('----------------------------------------')
+
+                if player.room.enemies  == ["Snakes...why did it have to be snakes?"]:
+                    
+                    attack = (random.randint(0, 10))
+                    print(f"You prepare to battle the snakes, with {attack} power!")
+                    if attack >= 2:
+                        print("You have defeated the Snakes, you may continue on!")
+                    else:
+                        print("You have died to a few wimpy snakes!")
+                        break     
+                elif player.room.enemies == ["Out of nowhere come three scary goblins"]:
+                    attack = (random.randint(0, 20))
+                    print(f"You prepare to battle the Goblins, with {attack} power!")
+                    if attack > 7:
+                        print("You have defeated the Goblins")
+                    else:
+                        print("The Goblins have smashed you to pieces!")
+                        break    
+                elif player.room.enemies == ["A group of Mummies lumber towards you"]:
+                    attack = (random.randint(0, 25))
+                    print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                    if attack > 10:
+                        print("You have defeated the Mummies!")
+                    else:
+                        print("The mummies have entombed you for eternity!")
+                        break  
+                elif player.room.enemies == ["A giant Red Dragon approaches"]:
+                    attack = (random.randint(0, 50))
+                    print(f"You prepare to battle the giant beast, with {attack} power!")
+                    if attack > 35:
+                        print("You have defeated the Dragon!")
+                    else:
+                        print("Fire reigns down upon your head, you have been engulfed in flames!")
+                        break  
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
             
@@ -262,6 +405,41 @@ while True:
             if len(player.room.enemies) >=1:
                 print(f" {player.room.enemies}")
                 print('----------------------------------------')
+
+                if player.room.enemies  == ["Snakes...why did it have to be snakes?"]:
+                    
+                    attack = (random.randint(0, 10))
+                    print(f"You prepare to battle the snakes, with {attack} power!")
+                    if attack >= 2:
+                        print("You have defeated the Snakes, you may continue on!")
+                    else:
+                        print("You have died to a few wimpy snakes!")
+                        break     
+                elif player.room.enemies == ["Out of nowhere come three scary goblins"]:
+                    attack = (random.randint(0, 20))
+                    print(f"You prepare to battle the Goblins, with {attack} power!")
+                    if attack > 7:
+                        print("You have defeated the Goblins")
+                    else:
+                        print("The Goblins have smashed you to pieces!")
+                        break    
+                elif player.room.enemies == ["A group of Mummies lumber towards you"]:
+                    attack = (random.randint(0, 25))
+                    print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                    if attack > 10:
+                        print("You have defeated the Mummies!")
+                    else:
+                        print("The mummies have entombed you for eternity!")
+                        break  
+                elif player.room.enemies == ["A giant Red Dragon approaches"]:
+                    attack = (random.randint(0, 50))
+                    print(f"You prepare to battle the giant beast, with {attack} power!")
+                    if attack > 35:
+                        print("You have defeated the Dragon!")
+                    else:
+                        print("Fire reigns down upon your head, you have been engulfed in flames!")
+                        break  
+
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
             
