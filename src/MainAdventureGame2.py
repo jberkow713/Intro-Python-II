@@ -64,11 +64,13 @@ room['Wizard training room'].w_to = room['Magical Entrance']
 
 
 
-Link = Player(name='Link', level=1, attack = 1, fortune=1, magic_attack = 1, defense=1, lives=10, magic_level=1, \
+Link = Player(name='Link', level=1, attack = 1,  fortune=1, magic_attack = 1, defense=1,  magic_level=1, \
     room=room["outside"], item=[] ) 
 
 player = Link
 print(f"Welcome {player.name}")
+difficulty_choice = input("Please choose easy, medium, hard, or expert: \n")
+player.set_lives(difficulty_choice)
 
 while True:
 
@@ -95,6 +97,25 @@ while True:
         player.magic_attack = player.magic_attack * 1.2
     if "Spear" in player.item:
         player.attack = player.attack * 1.2
+    if "Ocarina" in player.item:
+        player.magic_level = player.magic_level * 1.2
+    if "Bag of marbles" in player.item:
+        player.fortune = player.fortune * 1.1
+    if "Magic Cloak" in player.item:
+        player.magic_attack = player.magic_attack * 1.15
+    if "Crystal Sword" in player.item:
+        player.attack = player.attack * 1.3
+    if "Wand of Death" in player.item:
+        player.magic_attack = player.magic_attack * 1.3
+    if "Broomstick" in player.item:
+        player.canfly=True 
+    if "Glowing Candle" in player.item:
+        player.magic_level = player.magic_level * 1.1
+    if "Enchanted Staff" in player.item:
+        player.magic_attack = player.magic_attack * 1.25
+    if "Boomerang" in player.item:
+        player.attack = player.attack * 1.15            
+                                
     #Continue here            
 
 
@@ -225,6 +246,29 @@ while True:
                             print("Fire reigns down upon your head, you have been engulfed in flames!")
                                             
                             break    
+                    elif player.room.name == "Enchanted Forest":
+                        while player.lives >0:
+                            
+                            print(f"You have {player.lives} lives, let the battle begin!")
+                            attack = (random.randint(0,100)) * player.attack * player.magic_attack * player.defense 
+                            print(f"You prepare to battle the evil spider, with {round(attack,1)} power!")
+                            if attack >= 80:
+                                player.lives +=1
+                                player.level +=.15
+                                player.magic_level +=.15
+                                print("You have defeated the wretched monstrosity!")
+                                break 
+                            else:
+                                player.lives -=1
+                                print("The spider has you trapped in her web!")
+
+                        print(f"You have {player.lives} lives left!")     
+                        
+                        if player.lives  <= 0:
+                            print("The spider feasts upon your flesh!")
+                                            
+                            break    
+
 
 
 
