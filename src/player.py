@@ -4,12 +4,12 @@ from room import Room
 
 
 class Player:
-    def __init__(self, name, level, lives,  magic_level, hitpoints, room, item=[]):
+    def __init__(self, name, level, lives,  magic_level,  room, item=[]):
         self.room = room 
         self.name = name
         self.item = item
         self.level = level
-        self.hitpoints = hitpoints
+        
         self.magic_level = magic_level
         self.lives = lives
         

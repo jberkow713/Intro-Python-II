@@ -63,7 +63,7 @@ room['Wizard training room'].w_to = room['Magical Entrance']
 
 
 
-Link = Player(name='Link', level=1, lives=10, magic_level=1, hitpoints=100, room=room["outside"], item=[] ) 
+Link = Player(name='Link', level=1, lives=10, magic_level=1, room=room["outside"], item=[] ) 
 #print(Link)
 
 
@@ -74,6 +74,11 @@ player = Link
 print(f"Welcome {player.name}")
 
 while True:
+
+    player.lives = round((player.lives * player.level * player.magic_level),1)
+    print(f"Your current level is {round(player.level, 1)}, your current magic level is {round(player.magic_level,1)}")
+    print(f"You currently have {player.lives} lives left.")
+
 
     print('----------------------------------------')
     users_choice = input("Please choose north, east, west, south, or magic: ")
@@ -100,6 +105,7 @@ while True:
                         print(f"You prepare to battle the snakes, with {attack} power!")
                         if attack >= 2:
                             player.lives +=1
+                            player.level +=.02
                             print("You have defeated the Snakes, you may continue on!")
                             break
                         else:
@@ -108,7 +114,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("You have died to a few wimpy snakes!")
 
                         break 
@@ -121,6 +127,8 @@ while True:
                         print(f"You prepare to battle the Goblins, with {attack} power!")
                         if attack > 7:
                             player.lives +=1
+                            player.level +=.04
+                            player.magic_level +=.02
                             print("You have defeated the Goblins")
                             break                                  
                         else:
@@ -129,7 +137,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")        
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("The Goblins have smashed you to pieces!")                       
                         break 
 
@@ -142,6 +150,7 @@ while True:
                         print(f"You prepare to battle the lurking mummies, with {attack} power!")
                         if attack > 10:
                             player.lives +=1
+                            player.level +=.06
                             print("You have defeated the Mummies!")
                             break
                         else:
@@ -150,7 +159,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("The mummies have entombed you for eternity!")
                                            
                         break 
@@ -163,6 +172,8 @@ while True:
                         print(f"You prepare to battle the giant beast, with {attack} power!")
                         if attack >= 35:
                             player.lives +=1
+                            player.level +=.1
+                            player.magic_level +=.08
                             print("You have defeated the Dragon!")
                             break 
                         else:
@@ -171,7 +182,7 @@ while True:
 
                     print(f"You have {player.lives} lives left!")     
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("Fire reigns down upon your head, you have been engulfed in flames!")
                                            
                         break    
@@ -232,6 +243,7 @@ while True:
                         print(f"You prepare to battle the snakes, with {attack} power!")
                         if attack >= 2:
                             player.lives +=1
+                            player.level +=.02
                             print("You have defeated the Snakes, you may continue on!")
                             break
                         else:
@@ -240,7 +252,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("You have died to a few wimpy snakes!")
 
                         break 
@@ -253,6 +265,8 @@ while True:
                         print(f"You prepare to battle the Goblins, with {attack} power!")
                         if attack > 7:
                             player.lives +=1
+                            player.level +=.04
+                            player.magic_level +=.02
                             print("You have defeated the Goblins")
                             break                                  
                         else:
@@ -261,7 +275,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")        
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("The Goblins have smashed you to pieces!")                       
                         break 
 
@@ -274,6 +288,7 @@ while True:
                         print(f"You prepare to battle the lurking mummies, with {attack} power!")
                         if attack > 10:
                             player.lives +=1
+                            player.level +=.06
                             print("You have defeated the Mummies!")
                             break
                         else:
@@ -282,7 +297,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("The mummies have entombed you for eternity!")
                                            
                         break 
@@ -295,6 +310,8 @@ while True:
                         print(f"You prepare to battle the giant beast, with {attack} power!")
                         if attack >= 35:
                             player.lives +=1
+                            player.level +=.1
+                            player.magic_level +=.08
                             print("You have defeated the Dragon!")
                             break 
                         else:
@@ -303,7 +320,7 @@ while True:
 
                     print(f"You have {player.lives} lives left!")     
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("Fire reigns down upon your head, you have been engulfed in flames!")
                                            
                         break    
@@ -364,6 +381,7 @@ while True:
                         print(f"You prepare to battle the snakes, with {attack} power!")
                         if attack >= 2:
                             player.lives +=1
+                            player.level +=.02
                             print("You have defeated the Snakes, you may continue on!")
                             break
                         else:
@@ -372,7 +390,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("You have died to a few wimpy snakes!")
 
                         break 
@@ -385,6 +403,8 @@ while True:
                         print(f"You prepare to battle the Goblins, with {attack} power!")
                         if attack > 7:
                             player.lives +=1
+                            player.level +=.04
+                            player.magic_level +=.02
                             print("You have defeated the Goblins")
                             break                                  
                         else:
@@ -393,7 +413,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")        
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("The Goblins have smashed you to pieces!")                       
                         break 
 
@@ -406,6 +426,7 @@ while True:
                         print(f"You prepare to battle the lurking mummies, with {attack} power!")
                         if attack > 10:
                             player.lives +=1
+                            player.level +=.06
                             print("You have defeated the Mummies!")
                             break
                         else:
@@ -414,7 +435,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("The mummies have entombed you for eternity!")
                                            
                         break 
@@ -427,6 +448,8 @@ while True:
                         print(f"You prepare to battle the giant beast, with {attack} power!")
                         if attack >= 35:
                             player.lives +=1
+                            player.level +=.1
+                            player.magic_level +=.08
                             print("You have defeated the Dragon!")
                             break 
                         else:
@@ -435,47 +458,8 @@ while True:
 
                     print(f"You have {player.lives} lives left!")     
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("Fire reigns down upon your head, you have been engulfed in flames!")
-                                           
-                        break 
-
-
-                elif player.room.name == "Narrow Passage":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
-                        
-                        attack = (random.randint(0, 25))
-                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
-                        if attack > 10:
-                            player.lives +=1
-                            print("You have defeated the Mummies!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The mummies have entombed you for eternity!")
-                    
-                    print(f"You have {player.lives} lives left!")
-                    if player.lives  == 0:
-                                           
-                        break 
-
-                elif player.room.name == "Treasure Chamber":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
-
-                        attack = (random.randint(0, 50))
-                        print(f"You prepare to battle the giant beast, with {attack} power!")
-                        if attack >= 35:
-                            player.lives +=1
-                            print("You have defeated the Dragon!")
-                            break 
-                        else:
-                            player.lives -=1
-                            print("Fire reigns down upon your head, you have been engulfed in flames!")
-
-                    print(f"You have {player.lives} lives left!")     
-                    if player.lives  == 0:
                                            
                         break    
             print(f"You find {player.room.item}")
@@ -527,6 +511,7 @@ while True:
                         print(f"You prepare to battle the snakes, with {attack} power!")
                         if attack >= 2:
                             player.lives +=1
+                            player.level +=.02
                             print("You have defeated the Snakes, you may continue on!")
                             break
                         else:
@@ -535,7 +520,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("You have died to a few wimpy snakes!")
 
                         break 
@@ -548,6 +533,8 @@ while True:
                         print(f"You prepare to battle the Goblins, with {attack} power!")
                         if attack > 7:
                             player.lives +=1
+                            player.level +=.04
+                            player.magic_level +=.02
                             print("You have defeated the Goblins")
                             break                                  
                         else:
@@ -556,7 +543,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")        
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("The Goblins have smashed you to pieces!")                       
                         break 
 
@@ -569,6 +556,7 @@ while True:
                         print(f"You prepare to battle the lurking mummies, with {attack} power!")
                         if attack > 10:
                             player.lives +=1
+                            player.level +=.06
                             print("You have defeated the Mummies!")
                             break
                         else:
@@ -577,7 +565,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("The mummies have entombed you for eternity!")
                                            
                         break 
@@ -590,6 +578,8 @@ while True:
                         print(f"You prepare to battle the giant beast, with {attack} power!")
                         if attack >= 35:
                             player.lives +=1
+                            player.level +=.1
+                            player.magic_level +=.08
                             print("You have defeated the Dragon!")
                             break 
                         else:
@@ -598,29 +588,12 @@ while True:
 
                     print(f"You have {player.lives} lives left!")     
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("Fire reigns down upon your head, you have been engulfed in flames!")
                                            
                         break 
 
-                elif player.room.name == "Treasure Chamber":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
-
-                        attack = (random.randint(0, 50))
-                        print(f"You prepare to battle the giant beast, with {attack} power!")
-                        if attack >= 35:
-                            player.lives +=1
-                            print("You have defeated the Dragon!")
-                            break 
-                        else:
-                            player.lives -=1
-                            print("Fire reigns down upon your head, you have been engulfed in flames!")
-
-                    print(f"You have {player.lives} lives left!")     
-                    if player.lives  == 0:
-                                           
-                        break     
+                   
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
             
@@ -670,6 +643,7 @@ while True:
                         print(f"You prepare to battle the snakes, with {attack} power!")
                         if attack >= 2:
                             player.lives +=1
+                            player.level +=.02
                             print("You have defeated the Snakes, you may continue on!")
                             break
                         else:
@@ -678,7 +652,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("You have died to a few wimpy snakes!")
 
                         break 
@@ -691,6 +665,8 @@ while True:
                         print(f"You prepare to battle the Goblins, with {attack} power!")
                         if attack > 7:
                             player.lives +=1
+                            player.level +=.04
+                            player.magic_level +=.02
                             print("You have defeated the Goblins")
                             break                                  
                         else:
@@ -699,7 +675,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")        
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("The Goblins have smashed you to pieces!")                       
                         break 
 
@@ -712,6 +688,7 @@ while True:
                         print(f"You prepare to battle the lurking mummies, with {attack} power!")
                         if attack > 10:
                             player.lives +=1
+                            player.level +=.06
                             print("You have defeated the Mummies!")
                             break
                         else:
@@ -720,7 +697,7 @@ while True:
                     
                     print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("The mummies have entombed you for eternity!")
                                            
                         break 
@@ -733,6 +710,8 @@ while True:
                         print(f"You prepare to battle the giant beast, with {attack} power!")
                         if attack >= 35:
                             player.lives +=1
+                            player.level +=.1
+                            player.magic_level +=.08
                             print("You have defeated the Dragon!")
                             break 
                         else:
@@ -741,49 +720,13 @@ while True:
 
                     print(f"You have {player.lives} lives left!")     
                     
-                    if player.lives  == 0:
+                    if player.lives  <= 0:
                         print("Fire reigns down upon your head, you have been engulfed in flames!")
                                            
                         break 
+         
 
-
-                elif player.room.name == "Narrow Passage":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
-                        
-                        attack = (random.randint(0, 25))
-                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
-                        if attack > 10:
-                            player.lives +=1
-                            print("You have defeated the Mummies!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The mummies have entombed you for eternity!")
-                    
-                    print(f"You have {player.lives} lives left!")
-                    if player.lives  == 0:
-                                           
-                        break 
-
-                elif player.room.name == "Treasure Chamber":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
-
-                        attack = (random.randint(0, 50))
-                        print(f"You prepare to battle the giant beast, with {attack} power!")
-                        if attack >= 35:
-                            player.lives +=1
-                            print("You have defeated the Dragon!")
-                            break 
-                        else:
-                            player.lives -=1
-                            print("Fire reigns down upon your head, you have been engulfed in flames!")
-
-                    print(f"You have {player.lives} lives left!")     
-                    if player.lives  == 0:
-                                           
-                        break   
+                
 
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
