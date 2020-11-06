@@ -40,7 +40,7 @@ await you now! Beware the beasts that dwell within!""", ['Magic Cloak', 'Crystal
 
 
 # Link rooms together
-
+#World 1
 room['outside'].n_to = room['foyer']
 room['foyer'].s_to = room['outside']
 room['foyer'].n_to = room['overlook']
@@ -53,6 +53,7 @@ room['treasure'].n_to = room['Cave Exit']
 room['Cave Exit'].s_to = room['treasure']
 room['Cave Exit'].e_to = room['Enchanted Forest']
 room['Enchanted Forest'].magic_to = room['Magical Entrance']
+#World 2
 room['Magical Entrance'].n_to = room['Cauldron Room']
 room['Cauldron Room'].s_to = room['Magical Entrance']
 room['Magical Entrance'].e_to =room['Wizard training room']
@@ -76,7 +77,7 @@ print(f"Welcome {player.name}")
 
 while True:
 
-
+    #based on inventory, so they must reset to 1 before entering a new room in case inventory changes
     player.attack = 1
     player.magic_attack = 1
     player.defense = 1
@@ -108,7 +109,7 @@ while True:
 
 
 
-
+    #lives, level, and magic level are based on experience and defeating monsters, they can not reset
     player.lives = round((player.lives * player.level * player.magic_level),1)
     print(f"Your current level is {round(player.level, 1)}, your current magic level is {round(player.magic_level,1)}")
     print(f"You currently have {player.lives} lives left.")
@@ -132,11 +133,12 @@ while True:
             if len(player.room.enemies) >=1:
                 print(f" {player.room.enemies}")
                 print('----------------------------------------')
-                
+                #check if enemy exists
+                #check which room in to adapt the battle
                 if player.room.name  == "Foyer":
                     while player.lives > 0:
                         print(f"You have {player.lives} lives, let the battle begin!")
-                        
+                        #attack is improved based on your inventory which improves attributes
                         attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
                         print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
                         if attack >= 2:
@@ -149,7 +151,7 @@ while True:
                             print("The snakes have bitten you!")
                     
                     print(f"You have {player.lives} lives left!")
-                    
+                    #check to see if player died during battle
                     if player.lives  <= 0:
                         print("You have died to a few wimpy snakes!")
 
@@ -227,22 +229,22 @@ while True:
 
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
-            
+            #can not pick up duplicate items
             if item_choice in player.room.item and item_choice not in player.item:
-            
+                    #so far inventory cap is 5, may change it as game goes along and more rooms are added 
                     if len(player.item) >= 5:
                         print("You currently have too many items in your bag")
                         print(f"You currently possess {player.item}")
                         swap_choice = input("Please choose an item to swap from your bag: ")
                         if swap_choice in player.item:
-                            
+                            #replaces 5th item with new chosen item
                             player.item.remove(swap_choice)
                             player.item.append(item_choice)
                             
                             print(f"You currently possess {player.item}")
                         else:
                             print("You did not properly select an item to swap...better luck next time!")    
-                    
+                    #if less than 5 items are in inventory, adds item
                     elif len(player.item) <5:
                         print(f"You have added {item_choice}\n")
                         player.item.append(item_choice)
@@ -250,6 +252,7 @@ while True:
             elif item_choice in player.room.item and item_choice in player.item:
                 print("You may only carry one of that item")
                 continue
+            #if improperly typed, no item is added, may tweak in future
             else:
                 print("You did not choose a proper item, better luck next time!")
                 print(f"You currently possess {player.item}")
