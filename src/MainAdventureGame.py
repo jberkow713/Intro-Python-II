@@ -119,684 +119,695 @@ while True:
     print('----------------------------------------')
     users_choice = input("Please choose north, east, west, south, or magic: ")
     print('----------------------------------------')
-        
+    
+    choices = ["north", "east", "west", "south", "magic"]
+    directions = [player.room.n_to, player.room.e_to, player.room.w_to, player.room.s_to, player.room.magic_to]
+    path_dict = dict(zip(choices, directions))
+
+
     if users_choice == "q":
         print("Your journey has ended!")
         break
-        
-    if users_choice == "north":
-        if player.room.n_to is not None:
-            player.room = player.room.n_to
     
-            print(player.room.description)
-            print('----------------------------------------')
-            if len(player.room.enemies) >=1:
-                print(f" {player.room.enemies}")
+    for key, value in path_dict.items():
+        if users_choice == key:
+            if value is not None:
+                player.room = value
+
+
+    # if users_choice == "north":
+    #     if player.room.n_to is not None:
+    #         player.room = player.room.n_to
+    
+                print(player.room.description)
                 print('----------------------------------------')
-                #check if enemy exists
-                #check which room in to adapt the battle
-                if player.room.name  == "Foyer":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
-                        #attack is improved based on your inventory which improves attributes
-                        attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
-                        print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
-                        if attack >= 2:
-                            player.lives +=1
-                            player.level +=.02
-                            print("You have defeated the Snakes, you may continue on!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The snakes have bitten you!")
-                    
-                    print(f"You have {player.lives} lives left!")
-                    #check to see if player died during battle
-                    if player.lives  <= 0:
-                        print("You have died to a few wimpy snakes!")
-
-                        break 
-
-                elif player.room.name == "Grand Overlook":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
-
-                        attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
-                        print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
-                        if attack > 7:
-                            player.lives +=1
-                            player.level +=.04
-                            player.magic_level +=.02
-                            print("You have defeated the Goblins")
-                            break                                  
-                        else:
-                            player.lives -=1
-                            print("The Goblins have injured you with their knives!")
-                    
-                    print(f"You have {player.lives} lives left!")        
-                    
-                    if player.lives  <= 0:
-                        print("The Goblins have smashed you to pieces!")                       
-                        break 
-
-
-                elif player.room.name == "Narrow Passage":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+                if len(player.room.enemies) >=1:
+                    print(f" {player.room.enemies}")
+                    print('----------------------------------------')
+                    #check if enemy exists
+                    #check which room in to adapt the battle
+                    if player.room.name  == "Foyer":
+                        while player.lives > 0:
+                            print(f"You have {player.lives} lives, let the battle begin!")
+                            #attack is improved based on your inventory which improves attributes
+                            attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
+                            print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
+                            if attack >= 2:
+                                player.lives +=1
+                                player.level +=.02
+                                print("You have defeated the Snakes, you may continue on!")
+                                break
+                            else:
+                                player.lives -=1
+                                print("The snakes have bitten you!")
                         
-                        attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
-                        print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
-                        if attack > 10:
-                            player.lives +=1
-                            player.level +=.06
-                            print("You have defeated the Mummies!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The mummies have begun to mummify you!")
-                    
-                    print(f"You have {player.lives} lives left!")
-                    
-                    if player.lives  <= 0:
-                        print("The mummies have entombed you for eternity!")
-                                           
-                        break 
+                        print(f"You have {player.lives} lives left!")
+                        #check to see if player died during battle
+                        if player.lives  <= 0:
+                            print("You have died to a few wimpy snakes!")
 
-                elif player.room.name == "Treasure Chamber":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
-
-                        attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
-                        print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
-                        if attack >= 35:
-                            player.lives +=1
-                            player.level +=.1
-                            player.magic_level +=.08
-                            print("You have defeated the Dragon!")
                             break 
-                        else:
-                            player.lives -=1
-                            print("The monstrous claws of the red beast descend upon your head!")
 
-                    print(f"You have {player.lives} lives left!")     
-                    
-                    if player.lives  <= 0:
-                        print("Fire reigns down upon your head, you have been engulfed in flames!")
-                                           
-                        break    
+                    elif player.room.name == "Grand Overlook":
+                        while player.lives >0:
+                            print(f"You have {player.lives} lives, let the battle begin!")
+
+                            attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
+                            print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
+                            if attack > 7:
+                                player.lives +=1
+                                player.level +=.04
+                                player.magic_level +=.02
+                                print("You have defeated the Goblins")
+                                break                                  
+                            else:
+                                player.lives -=1
+                                print("The Goblins have injured you with their knives!")
+                        
+                        print(f"You have {player.lives} lives left!")        
+                        
+                        if player.lives  <= 0:
+                            print("The Goblins have smashed you to pieces!")                       
+                            break 
 
 
-
-            print(f"You find {player.room.item}")
-            item_choice = input("Which item will you pickup?: \n")
-            #can not pick up duplicate items
-            if item_choice in player.room.item and item_choice not in player.item:
-                    #so far inventory cap is 5, may change it as game goes along and more rooms are added 
-                    if len(player.item) >= 5:
-                        print("You currently have too many items in your bag")
-                        print(f"You currently possess {player.item}")
-                        swap_choice = input("Please choose an item to swap from your bag: ")
-                        if swap_choice in player.item:
-                            #replaces 5th item with new chosen item
-                            player.item.remove(swap_choice)
-                            player.item.append(item_choice)
+                    elif player.room.name == "Narrow Passage":
+                        while player.lives > 0:
+                            print(f"You have {player.lives} lives, let the battle begin!")
                             
+                            attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
+                            print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
+                            if attack > 10:
+                                player.lives +=1
+                                player.level +=.06
+                                print("You have defeated the Mummies!")
+                                break
+                            else:
+                                player.lives -=1
+                                print("The mummies have begun to mummify you!")
+                        
+                        print(f"You have {player.lives} lives left!")
+                        
+                        if player.lives  <= 0:
+                            print("The mummies have entombed you for eternity!")
+                                            
+                            break 
+
+                    elif player.room.name == "Treasure Chamber":
+                        while player.lives >0:
+                            print(f"You have {player.lives} lives, let the battle begin!")
+
+                            attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
+                            print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
+                            if attack >= 35:
+                                player.lives +=1
+                                player.level +=.1
+                                player.magic_level +=.08
+                                print("You have defeated the Dragon!")
+                                break 
+                            else:
+                                player.lives -=1
+                                print("The monstrous claws of the red beast descend upon your head!")
+
+                        print(f"You have {player.lives} lives left!")     
+                        
+                        if player.lives  <= 0:
+                            print("Fire reigns down upon your head, you have been engulfed in flames!")
+                                            
+                            break    
+
+
+
+                print(f"You find {player.room.item}")
+                item_choice = input("Which item will you pickup?: \n")
+                #can not pick up duplicate items
+                if item_choice in player.room.item and item_choice not in player.item:
+                        #so far inventory cap is 5, may change it as game goes along and more rooms are added 
+                        if len(player.item) >= 5:
+                            print("You currently have too many items in your bag")
                             print(f"You currently possess {player.item}")
-                        else:
-                            print("You did not properly select an item to swap...better luck next time!")    
-                    #if less than 5 items are in inventory, adds item
-                    elif len(player.item) <5:
-                        print(f"You have added {item_choice}\n")
-                        player.item.append(item_choice)
-                        print(f"You currently possess {player.item}")
-            elif item_choice in player.room.item and item_choice in player.item:
-                print("You may only carry one of that item")
-                continue
-            #if improperly typed, no item is added, may tweak in future
+                            swap_choice = input("Please choose an item to swap from your bag: ")
+                            if swap_choice in player.item:
+                                #replaces 5th item with new chosen item
+                                player.item.remove(swap_choice)
+                                player.item.append(item_choice)
+                                
+                                print(f"You currently possess {player.item}")
+                            else:
+                                print("You did not properly select an item to swap...better luck next time!")    
+                        #if less than 5 items are in inventory, adds item
+                        elif len(player.item) <5:
+                            print(f"You have added {item_choice}\n")
+                            player.item.append(item_choice)
+                            print(f"You currently possess {player.item}")
+                elif item_choice in player.room.item and item_choice in player.item:
+                    print("You may only carry one of that item")
+                    continue
+                #if improperly typed, no item is added, may tweak in future
+                else:
+                    print("You did not choose a proper item, better luck next time!")
+                    print(f"You currently possess {player.item}")
+                    continue   
+                
+                
+                
+                
             else:
-                print("You did not choose a proper item, better luck next time!")
-                print(f"You currently possess {player.item}")
-                continue   
-            
-            
-            
-            
-        else:
-            print('You can not go in that direction!')
-            continue
+                print('You can not go in that direction!')
+                continue
    
-    if users_choice == "south":
-        if player.room.s_to is not None:
-            player.room = player.room.s_to
-            print(player.room.description)
-            print('----------------------------------------')
-            if len(player.room.enemies) >=1:
-                print(f" {player.room.enemies}")
-                print('----------------------------------------')
+    # if users_choice == "south":
+    #     if player.room.s_to is not None:
+    #         player.room = player.room.s_to
+    #         print(player.room.description)
+    #         print('----------------------------------------')
+    #         if len(player.room.enemies) >=1:
+    #             print(f" {player.room.enemies}")
+    #             print('----------------------------------------')
 
-                if player.room.name  == "Foyer":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             if player.room.name  == "Foyer":
+    #                 while player.lives > 0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
-                        print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
-                        if attack >= 2:
-                            player.lives +=1
-                            player.level +=.02
-                            print("You have defeated the Snakes, you may continue on!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The snakes have bitten you!")
+    #                     attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
+    #                     print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
+    #                     if attack >= 2:
+    #                         player.lives +=1
+    #                         player.level +=.02
+    #                         print("You have defeated the Snakes, you may continue on!")
+    #                         break
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The snakes have bitten you!")
                     
-                    print(f"You have {player.lives} lives left!")
+    #                 print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  <= 0:
-                        print("You have died to a few wimpy snakes!")
+    #                 if player.lives  <= 0:
+    #                     print("You have died to a few wimpy snakes!")
 
-                        break 
+    #                     break 
 
-                elif player.room.name == "Grand Overlook":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Grand Overlook":
+    #                 while player.lives >0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
-                        print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
-                        if attack > 7:
-                            player.lives +=1
-                            player.level +=.04
-                            player.magic_level +=.02
-                            print("You have defeated the Goblins")
-                            break                                  
-                        else:
-                            player.lives -=1
-                            print("The Goblins have injured you with their knives!")
+    #                     attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
+    #                     print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
+    #                     if attack > 7:
+    #                         player.lives +=1
+    #                         player.level +=.04
+    #                         player.magic_level +=.02
+    #                         print("You have defeated the Goblins")
+    #                         break                                  
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The Goblins have injured you with their knives!")
                     
-                    print(f"You have {player.lives} lives left!")        
+    #                 print(f"You have {player.lives} lives left!")        
                     
-                    if player.lives  <= 0:
-                        print("The Goblins have smashed you to pieces!")                       
-                        break 
+    #                 if player.lives  <= 0:
+    #                     print("The Goblins have smashed you to pieces!")                       
+    #                     break 
 
 
-                elif player.room.name == "Narrow Passage":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Narrow Passage":
+    #                 while player.lives > 0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
-                        print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
-                        if attack > 10:
-                            player.lives +=1
-                            player.level +=.06
-                            print("You have defeated the Mummies!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The mummies have begun to mummify you!")
+    #                     attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
+    #                     print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
+    #                     if attack > 10:
+    #                         player.lives +=1
+    #                         player.level +=.06
+    #                         print("You have defeated the Mummies!")
+    #                         break
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The mummies have begun to mummify you!")
                     
-                    print(f"You have {player.lives} lives left!")
+    #                 print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  <= 0:
-                        print("The mummies have entombed you for eternity!")
+    #                 if player.lives  <= 0:
+    #                     print("The mummies have entombed you for eternity!")
                                            
-                        break 
+    #                     break 
 
-                elif player.room.name == "Treasure Chamber":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Treasure Chamber":
+    #                 while player.lives >0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
-                        print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
-                        if attack >= 35:
-                            player.lives +=1
-                            player.level +=.1
-                            player.magic_level +=.08
-                            print("You have defeated the Dragon!")
-                            break 
-                        else:
-                            player.lives -=1
-                            print("The monstrous claws of the red beast descend upon your head!")
+    #                     attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
+    #                     print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
+    #                     if attack >= 35:
+    #                         player.lives +=1
+    #                         player.level +=.1
+    #                         player.magic_level +=.08
+    #                         print("You have defeated the Dragon!")
+    #                         break 
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The monstrous claws of the red beast descend upon your head!")
 
-                    print(f"You have {player.lives} lives left!")     
+    #                 print(f"You have {player.lives} lives left!")     
                     
-                    if player.lives  <= 0:
-                        print("Fire reigns down upon your head, you have been engulfed in flames!")
+    #                 if player.lives  <= 0:
+    #                     print("Fire reigns down upon your head, you have been engulfed in flames!")
                                            
-                        break    
+    #                     break    
 
-            print(f"You find {player.room.item}")
-            item_choice = input("Which item will you pickup?: \n")
+    #         print(f"You find {player.room.item}")
+    #         item_choice = input("Which item will you pickup?: \n")
             
-            if item_choice in player.room.item and item_choice not in player.item:
+    #         if item_choice in player.room.item and item_choice not in player.item:
             
-                    if len(player.item) >= 5:
-                        print("You currently have too many items in your bag")
-                        print(f"You currently possess {player.item}")
-                        swap_choice = input("Please choose an item to swap from your bag: ")
-                        if swap_choice in player.item:
-                            player.item.remove(swap_choice)
-                            player.item.append(item_choice)
+    #                 if len(player.item) >= 5:
+    #                     print("You currently have too many items in your bag")
+    #                     print(f"You currently possess {player.item}")
+    #                     swap_choice = input("Please choose an item to swap from your bag: ")
+    #                     if swap_choice in player.item:
+    #                         player.item.remove(swap_choice)
+    #                         player.item.append(item_choice)
                             
-                            print(f"You currently possess {player.item}")
-                        else:
-                            print("You did not properly select an item to swap...better luck next time!")    
+    #                         print(f"You currently possess {player.item}")
+    #                     else:
+    #                         print("You did not properly select an item to swap...better luck next time!")    
                     
-                    elif len(player.item) <5:
-                        print(f"You have added {item_choice}\n")
-                        player.item.append(item_choice)
-                        print(f"You currently possess {player.item}")
+    #                 elif len(player.item) <5:
+    #                     print(f"You have added {item_choice}\n")
+    #                     player.item.append(item_choice)
+    #                     print(f"You currently possess {player.item}")
             
-            elif item_choice in player.room.item and item_choice in player.item:
-                print("You may only carry one of that item")
-                continue
+    #         elif item_choice in player.room.item and item_choice in player.item:
+    #             print("You may only carry one of that item")
+    #             continue
             
-            else:
-                print("You did not choose a proper item, better luck next time!")
-                print(f"You currently possess {player.item}")
-                continue   
+    #         else:
+    #             print("You did not choose a proper item, better luck next time!")
+    #             print(f"You currently possess {player.item}")
+    #             continue   
             
                                     
             
-        else:
-            print('You can not go in that direction!')
-            continue
+    #     else:
+    #         print('You can not go in that direction!')
+    #         continue
           
 
              
-    if users_choice == "west":
-        if player.room.w_to is not None:
-            player.room = player.room.w_to
-            print(player.room.description)
-            print('----------------------------------------')
-            if len(player.room.enemies) >=1:
-                print(f" {player.room.enemies}")
-                print('----------------------------------------')
+    # if users_choice == "west":
+    #     if player.room.w_to is not None:
+    #         player.room = player.room.w_to
+    #         print(player.room.description)
+    #         print('----------------------------------------')
+    #         if len(player.room.enemies) >=1:
+    #             print(f" {player.room.enemies}")
+    #             print('----------------------------------------')
 
-                if player.room.name  == "Foyer":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             if player.room.name  == "Foyer":
+    #                 while player.lives > 0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
-                        print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
-                        if attack >= 2:
-                            player.lives +=1
-                            player.level +=.02
-                            print("You have defeated the Snakes, you may continue on!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The snakes have bitten you!")
+    #                     attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
+    #                     print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
+    #                     if attack >= 2:
+    #                         player.lives +=1
+    #                         player.level +=.02
+    #                         print("You have defeated the Snakes, you may continue on!")
+    #                         break
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The snakes have bitten you!")
                     
-                    print(f"You have {player.lives} lives left!")
+    #                 print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  <= 0:
-                        print("You have died to a few wimpy snakes!")
+    #                 if player.lives  <= 0:
+    #                     print("You have died to a few wimpy snakes!")
 
-                        break 
+    #                     break 
 
-                elif player.room.name == "Grand Overlook":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Grand Overlook":
+    #                 while player.lives >0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
-                        print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
-                        if attack > 7:
-                            player.lives +=1
-                            player.level +=.04
-                            player.magic_level +=.02
-                            print("You have defeated the Goblins")
-                            break                                  
-                        else:
-                            player.lives -=1
-                            print("The Goblins have injured you with their knives!")
+    #                     attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
+    #                     print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
+    #                     if attack > 7:
+    #                         player.lives +=1
+    #                         player.level +=.04
+    #                         player.magic_level +=.02
+    #                         print("You have defeated the Goblins")
+    #                         break                                  
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The Goblins have injured you with their knives!")
                     
-                    print(f"You have {player.lives} lives left!")        
+    #                 print(f"You have {player.lives} lives left!")        
                     
-                    if player.lives  <= 0:
-                        print("The Goblins have smashed you to pieces!")                       
-                        break 
+    #                 if player.lives  <= 0:
+    #                     print("The Goblins have smashed you to pieces!")                       
+    #                     break 
 
 
-                elif player.room.name == "Narrow Passage":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Narrow Passage":
+    #                 while player.lives > 0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
-                        print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
-                        if attack > 10:
-                            player.lives +=1
-                            player.level +=.06
-                            print("You have defeated the Mummies!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The mummies have begun to mummify you!")
+    #                     attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
+    #                     print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
+    #                     if attack > 10:
+    #                         player.lives +=1
+    #                         player.level +=.06
+    #                         print("You have defeated the Mummies!")
+    #                         break
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The mummies have begun to mummify you!")
                     
-                    print(f"You have {player.lives} lives left!")
+    #                 print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  <= 0:
-                        print("The mummies have entombed you for eternity!")
+    #                 if player.lives  <= 0:
+    #                     print("The mummies have entombed you for eternity!")
                                            
-                        break 
+    #                     break 
 
-                elif player.room.name == "Treasure Chamber":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Treasure Chamber":
+    #                 while player.lives >0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
-                        print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
-                        if attack >= 35:
-                            player.lives +=1
-                            player.level +=.1
-                            player.magic_level +=.08
-                            print("You have defeated the Dragon!")
-                            break 
-                        else:
-                            player.lives -=1
-                            print("The monstrous claws of the red beast descend upon your head!")
+    #                     attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
+    #                     print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
+    #                     if attack >= 35:
+    #                         player.lives +=1
+    #                         player.level +=.1
+    #                         player.magic_level +=.08
+    #                         print("You have defeated the Dragon!")
+    #                         break 
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The monstrous claws of the red beast descend upon your head!")
 
-                    print(f"You have {player.lives} lives left!")     
+    #                 print(f"You have {player.lives} lives left!")     
                     
-                    if player.lives  <= 0:
-                        print("Fire reigns down upon your head, you have been engulfed in flames!")
+    #                 if player.lives  <= 0:
+    #                     print("Fire reigns down upon your head, you have been engulfed in flames!")
                                            
-                        break    
-            print(f"You find {player.room.item}")
-            item_choice = input("Which item will you pickup?: \n")
+    #                     break    
+    #         print(f"You find {player.room.item}")
+    #         item_choice = input("Which item will you pickup?: \n")
             
-            if item_choice in player.room.item and item_choice not in player.item:
+    #         if item_choice in player.room.item and item_choice not in player.item:
             
-                    if len(player.item) >= 5:
-                        print("You currently have too many items in your bag")
-                        print(f"You currently possess {player.item}")
-                        swap_choice = input("Please choose an item to swap from your bag: ")
-                        if swap_choice in player.item:
-                            player.item.remove(swap_choice)
-                            player.item.append(item_choice)
+    #                 if len(player.item) >= 5:
+    #                     print("You currently have too many items in your bag")
+    #                     print(f"You currently possess {player.item}")
+    #                     swap_choice = input("Please choose an item to swap from your bag: ")
+    #                     if swap_choice in player.item:
+    #                         player.item.remove(swap_choice)
+    #                         player.item.append(item_choice)
                             
-                            print(f"You currently possess {player.item}")
-                        else:
-                            print("You did not properly select an item to swap...better luck next time!")    
+    #                         print(f"You currently possess {player.item}")
+    #                     else:
+    #                         print("You did not properly select an item to swap...better luck next time!")    
                     
-                    elif len(player.item) <5:
-                        print(f"You have added {item_choice}\n")
-                        player.item.append(item_choice)
-                        print(f"You currently possess {player.item}")
-            elif item_choice in player.room.item and item_choice in player.item:
-                print("You may only carry one of that item")
-                continue
-            else:
-                print("You did not choose a proper item, better luck next time!")
-                print(f"You currently possess {player.item}")
-                continue   
-        else:
-            print('You can not go in that direction!')
-            continue
+    #                 elif len(player.item) <5:
+    #                     print(f"You have added {item_choice}\n")
+    #                     player.item.append(item_choice)
+    #                     print(f"You currently possess {player.item}")
+    #         elif item_choice in player.room.item and item_choice in player.item:
+    #             print("You may only carry one of that item")
+    #             continue
+    #         else:
+    #             print("You did not choose a proper item, better luck next time!")
+    #             print(f"You currently possess {player.item}")
+    #             continue   
+    #     else:
+    #         print('You can not go in that direction!')
+    #         continue
              
-    if users_choice == "east":
-        if player.room.e_to is not  None:
-            player.room = player.room.e_to
-            print(player.room.description)
-            print('----------------------------------------')
-            if len(player.room.enemies) >=1:
-                print(f" {player.room.enemies}")
-                print('----------------------------------------')
+    # if users_choice == "east":
+    #     if player.room.e_to is not  None:
+    #         player.room = player.room.e_to
+    #         print(player.room.description)
+    #         print('----------------------------------------')
+    #         if len(player.room.enemies) >=1:
+    #             print(f" {player.room.enemies}")
+    #             print('----------------------------------------')
 
-                if player.room.name  == "Foyer":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             if player.room.name  == "Foyer":
+    #                 while player.lives > 0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
-                        print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
-                        if attack >= 2:
-                            player.lives +=1
-                            player.level +=.02
-                            print("You have defeated the Snakes, you may continue on!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The snakes have bitten you!")
+    #                     attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
+    #                     print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
+    #                     if attack >= 2:
+    #                         player.lives +=1
+    #                         player.level +=.02
+    #                         print("You have defeated the Snakes, you may continue on!")
+    #                         break
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The snakes have bitten you!")
                     
-                    print(f"You have {player.lives} lives left!")
+    #                 print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  <= 0:
-                        print("You have died to a few wimpy snakes!")
+    #                 if player.lives  <= 0:
+    #                     print("You have died to a few wimpy snakes!")
 
-                        break 
+    #                     break 
 
-                elif player.room.name == "Grand Overlook":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Grand Overlook":
+    #                 while player.lives >0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
-                        print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
-                        if attack > 7:
-                            player.lives +=1
-                            player.level +=.04
-                            player.magic_level +=.02
-                            print("You have defeated the Goblins")
-                            break                                  
-                        else:
-                            player.lives -=1
-                            print("The Goblins have injured you with their knives!")
+    #                     attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
+    #                     print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
+    #                     if attack > 7:
+    #                         player.lives +=1
+    #                         player.level +=.04
+    #                         player.magic_level +=.02
+    #                         print("You have defeated the Goblins")
+    #                         break                                  
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The Goblins have injured you with their knives!")
                     
-                    print(f"You have {player.lives} lives left!")        
+    #                 print(f"You have {player.lives} lives left!")        
                     
-                    if player.lives  <= 0:
-                        print("The Goblins have smashed you to pieces!")                       
-                        break 
+    #                 if player.lives  <= 0:
+    #                     print("The Goblins have smashed you to pieces!")                       
+    #                     break 
 
 
-                elif player.room.name == "Narrow Passage":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Narrow Passage":
+    #                 while player.lives > 0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
-                        print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
-                        if attack > 10:
-                            player.lives +=1
-                            player.level +=.06
-                            print("You have defeated the Mummies!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The mummies have begun to mummify you!")
+    #                     attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
+    #                     print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
+    #                     if attack > 10:
+    #                         player.lives +=1
+    #                         player.level +=.06
+    #                         print("You have defeated the Mummies!")
+    #                         break
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The mummies have begun to mummify you!")
                     
-                    print(f"You have {player.lives} lives left!")
+    #                 print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  <= 0:
-                        print("The mummies have entombed you for eternity!")
+    #                 if player.lives  <= 0:
+    #                     print("The mummies have entombed you for eternity!")
                                            
-                        break 
+    #                     break 
 
-                elif player.room.name == "Treasure Chamber":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Treasure Chamber":
+    #                 while player.lives >0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
-                        print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
-                        if attack >= 35:
-                            player.lives +=1
-                            player.level +=.1
-                            player.magic_level +=.08
-                            print("You have defeated the Dragon!")
-                            break 
-                        else:
-                            player.lives -=1
-                            print("The monstrous claws of the red beast descend upon your head!")
+    #                     attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
+    #                     print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
+    #                     if attack >= 35:
+    #                         player.lives +=1
+    #                         player.level +=.1
+    #                         player.magic_level +=.08
+    #                         print("You have defeated the Dragon!")
+    #                         break 
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The monstrous claws of the red beast descend upon your head!")
 
-                    print(f"You have {player.lives} lives left!")     
+    #                 print(f"You have {player.lives} lives left!")     
                     
-                    if player.lives  <= 0:
-                        print("Fire reigns down upon your head, you have been engulfed in flames!")
+    #                 if player.lives  <= 0:
+    #                     print("Fire reigns down upon your head, you have been engulfed in flames!")
                                            
-                        break 
+    #                     break 
 
                    
-            print(f"You find {player.room.item}")
-            item_choice = input("Which item will you pickup?: \n")
+    #         print(f"You find {player.room.item}")
+    #         item_choice = input("Which item will you pickup?: \n")
             
-            if item_choice in player.room.item and item_choice not in player.item:
+    #         if item_choice in player.room.item and item_choice not in player.item:
             
-                    if len(player.item) >= 5:
-                        print("You currently have too many items in your bag")
-                        print(f"You currently possess {player.item}")
-                        swap_choice = input("Please choose an item to swap from your bag: ")
-                        if swap_choice in player.item:
-                            player.item.remove(swap_choice)
-                            player.item.append(item_choice)
+    #                 if len(player.item) >= 5:
+    #                     print("You currently have too many items in your bag")
+    #                     print(f"You currently possess {player.item}")
+    #                     swap_choice = input("Please choose an item to swap from your bag: ")
+    #                     if swap_choice in player.item:
+    #                         player.item.remove(swap_choice)
+    #                         player.item.append(item_choice)
                             
-                            print(f"You currently possess {player.item}")
-                        else:
-                            print("You did not properly select an item to swap...better luck next time!")    
+    #                         print(f"You currently possess {player.item}")
+    #                     else:
+    #                         print("You did not properly select an item to swap...better luck next time!")    
                     
-                    elif len(player.item) <5:
-                        print(f"You have added {item_choice}\n")
-                        player.item.append(item_choice)
-                        print(f"You currently possess {player.item}")
-            elif item_choice in player.room.item and item_choice in player.item:
-                print("You may only carry one of that item")
-                continue
-            else:
-                print("You did not choose a proper item, better luck next time!")
-                print(f"You currently possess {player.item}")
-                continue   
-        else:
-            print('You can not go in that direction!')
-            continue
+    #                 elif len(player.item) <5:
+    #                     print(f"You have added {item_choice}\n")
+    #                     player.item.append(item_choice)
+    #                     print(f"You currently possess {player.item}")
+    #         elif item_choice in player.room.item and item_choice in player.item:
+    #             print("You may only carry one of that item")
+    #             continue
+    #         else:
+    #             print("You did not choose a proper item, better luck next time!")
+    #             print(f"You currently possess {player.item}")
+    #             continue   
+    #     else:
+    #         print('You can not go in that direction!')
+    #         continue
     
-    if users_choice == "magic":
-        if player.room.magic_to is not None:
-            player.room = player.room.magic_to
-            print(player.room.description)
-            print('----------------------------------------')
-            if len(player.room.enemies) >=1:
-                print(f" {player.room.enemies}")
-                print('----------------------------------------')
+    # if users_choice == "magic":
+    #     if player.room.magic_to is not None:
+    #         player.room = player.room.magic_to
+    #         print(player.room.description)
+    #         print('----------------------------------------')
+    #         if len(player.room.enemies) >=1:
+    #             print(f" {player.room.enemies}")
+    #             print('----------------------------------------')
 
-                if player.room.name  == "Foyer":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             if player.room.name  == "Foyer":
+    #                 while player.lives > 0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
-                        print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
-                        if attack >= 2:
-                            player.lives +=1
-                            player.level +=.02
-                            print("You have defeated the Snakes, you may continue on!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The snakes have bitten you!")
+    #                     attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
+    #                     print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
+    #                     if attack >= 2:
+    #                         player.lives +=1
+    #                         player.level +=.02
+    #                         print("You have defeated the Snakes, you may continue on!")
+    #                         break
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The snakes have bitten you!")
                     
-                    print(f"You have {player.lives} lives left!")
+    #                 print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  <= 0:
-                        print("You have died to a few wimpy snakes!")
+    #                 if player.lives  <= 0:
+    #                     print("You have died to a few wimpy snakes!")
 
-                        break 
+    #                     break 
 
-                elif player.room.name == "Grand Overlook":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Grand Overlook":
+    #                 while player.lives >0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
-                        print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
-                        if attack > 7:
-                            player.lives +=1
-                            player.level +=.04
-                            player.magic_level +=.02
-                            print("You have defeated the Goblins")
-                            break                                  
-                        else:
-                            player.lives -=1
-                            print("The Goblins have injured you with their knives!")
+    #                     attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
+    #                     print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
+    #                     if attack > 7:
+    #                         player.lives +=1
+    #                         player.level +=.04
+    #                         player.magic_level +=.02
+    #                         print("You have defeated the Goblins")
+    #                         break                                  
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The Goblins have injured you with their knives!")
                     
-                    print(f"You have {player.lives} lives left!")        
+    #                 print(f"You have {player.lives} lives left!")        
                     
-                    if player.lives  <= 0:
-                        print("The Goblins have smashed you to pieces!")                       
-                        break 
+    #                 if player.lives  <= 0:
+    #                     print("The Goblins have smashed you to pieces!")                       
+    #                     break 
 
 
-                elif player.room.name == "Narrow Passage":
-                    while player.lives > 0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Narrow Passage":
+    #                 while player.lives > 0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
-                        print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
-                        if attack > 10:
-                            player.lives +=1
-                            player.level +=.06
-                            print("You have defeated the Mummies!")
-                            break
-                        else:
-                            player.lives -=1
-                            print("The mummies have begun to mummify you!")
+    #                     attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
+    #                     print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
+    #                     if attack > 10:
+    #                         player.lives +=1
+    #                         player.level +=.06
+    #                         print("You have defeated the Mummies!")
+    #                         break
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The mummies have begun to mummify you!")
                     
-                    print(f"You have {player.lives} lives left!")
+    #                 print(f"You have {player.lives} lives left!")
                     
-                    if player.lives  <= 0:
-                        print("The mummies have entombed you for eternity!")
+    #                 if player.lives  <= 0:
+    #                     print("The mummies have entombed you for eternity!")
                                            
-                        break 
+    #                     break 
 
-                elif player.room.name == "Treasure Chamber":
-                    while player.lives >0:
-                        print(f"You have {player.lives} lives, let the battle begin!")
+    #             elif player.room.name == "Treasure Chamber":
+    #                 while player.lives >0:
+    #                     print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
-                        print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
-                        if attack >= 35:
-                            player.lives +=1
-                            player.level +=.1
-                            player.magic_level +=.08
-                            print("You have defeated the Dragon!")
-                            break 
-                        else:
-                            player.lives -=1
-                            print("The monstrous claws of the red beast descend upon your head!")
+    #                     attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
+    #                     print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
+    #                     if attack >= 35:
+    #                         player.lives +=1
+    #                         player.level +=.1
+    #                         player.magic_level +=.08
+    #                         print("You have defeated the Dragon!")
+    #                         break 
+    #                     else:
+    #                         player.lives -=1
+    #                         print("The monstrous claws of the red beast descend upon your head!")
 
-                    print(f"You have {player.lives} lives left!")     
+    #                 print(f"You have {player.lives} lives left!")     
                     
-                    if player.lives  <= 0:
-                        print("Fire reigns down upon your head, you have been engulfed in flames!")
+    #                 if player.lives  <= 0:
+    #                     print("Fire reigns down upon your head, you have been engulfed in flames!")
                                            
-                        break 
+    #                     break 
          
 
                 
 
-            print(f"You find {player.room.item}")
-            item_choice = input("Which item will you pickup?: \n")
+        #     print(f"You find {player.room.item}")
+        #     item_choice = input("Which item will you pickup?: \n")
             
-            if item_choice in player.room.item and item_choice not in player.item:
+        #     if item_choice in player.room.item and item_choice not in player.item:
             
-                    if len(player.item) >= 5:
-                        print("You currently have too many items in your bag")
-                        print(f"You currently possess {player.item}")
-                        swap_choice = input("Please choose an item to swap from your bag: ")
-                        if swap_choice in player.item:
-                            player.item.remove(swap_choice)
-                            player.item.append(item_choice)
+        #             if len(player.item) >= 5:
+        #                 print("You currently have too many items in your bag")
+        #                 print(f"You currently possess {player.item}")
+        #                 swap_choice = input("Please choose an item to swap from your bag: ")
+        #                 if swap_choice in player.item:
+        #                     player.item.remove(swap_choice)
+        #                     player.item.append(item_choice)
                             
-                            print(f"You currently possess {player.item}")
-                        else:
-                            print("You did not properly select an item to swap...better luck next time!")    
+        #                     print(f"You currently possess {player.item}")
+        #                 else:
+        #                     print("You did not properly select an item to swap...better luck next time!")    
                     
-                    elif len(player.item) <5:
-                        print(f"You have added {item_choice}\n")
-                        player.item.append(item_choice)
-                        print(f"You currently possess {player.item}")
-            elif item_choice in player.room.item and item_choice in player.item:
-                print("You may only carry one of that item")
-                continue
-            else:
-                print("You did not choose a proper item, better luck next time!")
-                print(f"You currently possess {player.item}")
-                continue   
+        #             elif len(player.item) <5:
+        #                 print(f"You have added {item_choice}\n")
+        #                 player.item.append(item_choice)
+        #                 print(f"You currently possess {player.item}")
+        #     elif item_choice in player.room.item and item_choice in player.item:
+        #         print("You may only carry one of that item")
+        #         continue
+        #     else:
+        #         print("You did not choose a proper item, better luck next time!")
+        #         print(f"You currently possess {player.item}")
+        #         continue   
                   
-        else:
-            print('You can not go in that direction!')
-            continue    
+        # else:
+        #     print('You can not go in that direction!')
+        #     continue    
                     
