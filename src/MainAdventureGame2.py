@@ -66,12 +66,7 @@ room['Wizard training room'].w_to = room['Magical Entrance']
 
 Link = Player(name='Link', level=1, attack = 1, fortune=1, magic_attack = 1, defense=1, lives=10, magic_level=1, \
     room=room["outside"], item=[] ) 
-#print(Link)
 
-
-
-# name = input("ENTER YOUR NAME!") 
-# player = Player(name=name, room=room["outside"])
 player = Link
 print(f"Welcome {player.name}")
 
@@ -128,17 +123,12 @@ while True:
     if users_choice == "q":
         print("Your journey has ended!")
         break
-    
+    #consolidated all directions into one for loop!    
     for key, value in path_dict.items():
         if users_choice == key:
             if value is not None:
                 player.room = value
-
-
-    # if users_choice == "north":
-    #     if player.room.n_to is not None:
-    #         player.room = player.room.n_to
-    
+     
                 print(player.room.description)
                 print('----------------------------------------')
                 if len(player.room.enemies) >=1:
