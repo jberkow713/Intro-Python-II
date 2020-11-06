@@ -28,16 +28,27 @@ class Player:
             if difficulty_choice == key:
                 Player.lives = value  
                         
+    def set_initial_fortune_and_defense(self):
+        # roll_1 = (random.randint(0, 100))
+        roll_2 = (random.randint(0, 100))
+        # roll_3 = (random.randint(0, 100))
+        roll_4 = (random.randint(0, 100))
+        # roll_5 = (random.randint(0, 100))
 
+        
+        Player.fortune = round(roll_2/ 50, 1)        
+        Player.defense = round(roll_4/ 10, 1)
+        
     def set_player_attributes(self, difficulty_choice):
+            
         Player.attack = 1
-        Player.fortune = 1
+        # Player.fortune = 1
         Player.magic_attack = 1    
-        Player.defense = 1 
+        # Player.defense = 1 
         Player.magic_level = 1
 
         difficulty_levels = ["easy", "medium", "hard", "expert"]
-        difficulty_multiplier = [1.3, 1.0, .8, .6]
+        difficulty_multiplier = [1.2, 1.0, .8, .6]
         difficulty_dict = dict(zip(difficulty_levels, difficulty_multiplier))
         
         for key, value in difficulty_dict.items():

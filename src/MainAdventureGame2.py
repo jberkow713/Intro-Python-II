@@ -86,10 +86,19 @@ player = Player(name=User_name, level=1, defense=1,  magic_level=1, \
 print(f"Welcome {player.name}")
 difficulty_choice = input("Please choose easy, medium, hard, or expert: \n")
 player.set_lives(difficulty_choice)
+player.set_initial_fortune_and_defense()
+
+print(f"Your starting fortune is {player.fortune}") 
+print(f"Your starting defense is {player.defense}") 
+
 
 while True:
     #Set attributes at start of every battle
+    if player.lives <=0:
+        print("Your journey has ended, but we all must fade someday...try again soon!")
+        break 
     print('----------------------------------------')
+            
     player.set_player_attributes(difficulty_choice)
 
     #lives, level, and magic level are based on experience and defeating monsters, they can not reset
