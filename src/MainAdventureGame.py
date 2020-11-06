@@ -63,7 +63,7 @@ room['Wizard training room'].w_to = room['Magical Entrance']
 
 
 
-Link = Player(name='Link', level=1, magic_level=1, hitpoints=100, room=room["outside"], item=[] ) 
+Link = Player(name='Link', level=1, lives=10, magic_level=1, hitpoints=100, room=room["outside"], item=[] ) 
 #print(Link)
 
 
@@ -93,38 +93,88 @@ while True:
                 print('----------------------------------------')
                 
                 if player.room.name  == "Foyer":
-                    attack = (random.randint(0, 10))
-                    print(f"You prepare to battle the snakes, with {attack} power!")
-                    if attack >= 2:
-                        print("You have defeated the Snakes, you may continue on!")
-                    else:
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 10))
+                        print(f"You prepare to battle the snakes, with {attack} power!")
+                        if attack >= 2:
+                            player.lives +=1
+                            print("You have defeated the Snakes, you may continue on!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The snakes have bitten you!")
+                    
+                    print(f"You have {player.lives} lives left!")
+                    
+                    if player.lives  == 0:
                         print("You have died to a few wimpy snakes!")
-                        break     
-                elif player.room.name == "Grand Overlook":
-                    attack = (random.randint(0, 20))
-                    print(f"You prepare to battle the Goblins, with {attack} power!")
-                    if attack > 7:
-                        print("You have defeated the Goblins")
-                    else:
-                        print("The Goblins have smashed you to pieces!")
-                        break    
-                elif player.room.name == "Narrow Passage":
-                    attack = (random.randint(0, 25))
-                    print(f"You prepare to battle the lurking mummies, with {attack} power!")
-                    if attack > 10:
-                        print("You have defeated the Mummies!")
-                    else:
-                        print("The mummies have entombed you for eternity!")
-                        break  
-                elif player.room.name == "Treasure Chamber":
-                    attack = (random.randint(0, 50))
-                    print(f"You prepare to battle the giant beast, with {attack} power!")
-                    if attack >= 35:
-                        print("You have defeated the Dragon!")
-                    else:
-                        print("Fire reigns down upon your head, you have been engulfed in flames!")
-                        break  
 
+                        break 
+
+                elif player.room.name == "Grand Overlook":
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 20))
+                        print(f"You prepare to battle the Goblins, with {attack} power!")
+                        if attack > 7:
+                            player.lives +=1
+                            print("You have defeated the Goblins")
+                            break                                  
+                        else:
+                            player.lives -=1
+                            print("The Goblins have injured you with their knives!")
+                    
+                    print(f"You have {player.lives} lives left!")        
+                    
+                    if player.lives  == 0:
+                        print("The Goblins have smashed you to pieces!")                       
+                        break 
+
+
+                elif player.room.name == "Narrow Passage":
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 25))
+                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        if attack > 10:
+                            player.lives +=1
+                            print("You have defeated the Mummies!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The mummies have begun to mummify you!")
+                    
+                    print(f"You have {player.lives} lives left!")
+                    
+                    if player.lives  == 0:
+                        print("The mummies have entombed you for eternity!")
+                                           
+                        break 
+
+                elif player.room.name == "Treasure Chamber":
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 50))
+                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        if attack >= 35:
+                            player.lives +=1
+                            print("You have defeated the Dragon!")
+                            break 
+                        else:
+                            player.lives -=1
+                            print("The monstrous claws of the red beast descend upon your head!")
+
+                    print(f"You have {player.lives} lives left!")     
+                    
+                    if player.lives  == 0:
+                        print("Fire reigns down upon your head, you have been engulfed in flames!")
+                                           
+                        break    
 
 
 
@@ -175,37 +225,88 @@ while True:
                 print('----------------------------------------')
 
                 if player.room.name  == "Foyer":
-                    attack = (random.randint(0, 10))
-                    print(f"You prepare to battle the snakes, with {attack} power!")
-                    if attack >= 2:
-                        print("You have defeated the Snakes, you may continue on!")
-                    else:
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 10))
+                        print(f"You prepare to battle the snakes, with {attack} power!")
+                        if attack >= 2:
+                            player.lives +=1
+                            print("You have defeated the Snakes, you may continue on!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The snakes have bitten you!")
+                    
+                    print(f"You have {player.lives} lives left!")
+                    
+                    if player.lives  == 0:
                         print("You have died to a few wimpy snakes!")
-                        break     
+
+                        break 
+
                 elif player.room.name == "Grand Overlook":
-                    attack = (random.randint(0, 20))
-                    print(f"You prepare to battle the Goblins, with {attack} power!")
-                    if attack > 7:
-                        print("You have defeated the Goblins")
-                    else:
-                        print("The Goblins have smashed you to pieces!")
-                        break    
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 20))
+                        print(f"You prepare to battle the Goblins, with {attack} power!")
+                        if attack > 7:
+                            player.lives +=1
+                            print("You have defeated the Goblins")
+                            break                                  
+                        else:
+                            player.lives -=1
+                            print("The Goblins have injured you with their knives!")
+                    
+                    print(f"You have {player.lives} lives left!")        
+                    
+                    if player.lives  == 0:
+                        print("The Goblins have smashed you to pieces!")                       
+                        break 
+
+
                 elif player.room.name == "Narrow Passage":
-                    attack = (random.randint(0, 25))
-                    print(f"You prepare to battle the lurking mummies, with {attack} power!")
-                    if attack > 10:
-                        print("You have defeated the Mummies!")
-                    else:
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 25))
+                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        if attack > 10:
+                            player.lives +=1
+                            print("You have defeated the Mummies!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The mummies have begun to mummify you!")
+                    
+                    print(f"You have {player.lives} lives left!")
+                    
+                    if player.lives  == 0:
                         print("The mummies have entombed you for eternity!")
-                        break  
+                                           
+                        break 
+
                 elif player.room.name == "Treasure Chamber":
-                    attack = (random.randint(0, 50))
-                    print(f"You prepare to battle the giant beast, with {attack} power!")
-                    if attack >= 35:
-                        print("You have defeated the Dragon!")
-                    else:
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 50))
+                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        if attack >= 35:
+                            player.lives +=1
+                            print("You have defeated the Dragon!")
+                            break 
+                        else:
+                            player.lives -=1
+                            print("The monstrous claws of the red beast descend upon your head!")
+
+                    print(f"You have {player.lives} lives left!")     
+                    
+                    if player.lives  == 0:
                         print("Fire reigns down upon your head, you have been engulfed in flames!")
-                        break  
+                                           
+                        break    
 
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
@@ -256,37 +357,127 @@ while True:
                 print('----------------------------------------')
 
                 if player.room.name  == "Foyer":
-                    attack = (random.randint(0, 10))
-                    print(f"You prepare to battle the snakes, with {attack} power!")
-                    if attack >= 2:
-                        print("You have defeated the Snakes, you may continue on!")
-                    else:
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 10))
+                        print(f"You prepare to battle the snakes, with {attack} power!")
+                        if attack >= 2:
+                            player.lives +=1
+                            print("You have defeated the Snakes, you may continue on!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The snakes have bitten you!")
+                    
+                    print(f"You have {player.lives} lives left!")
+                    
+                    if player.lives  == 0:
                         print("You have died to a few wimpy snakes!")
-                        break     
+
+                        break 
+
                 elif player.room.name == "Grand Overlook":
-                    attack = (random.randint(0, 20))
-                    print(f"You prepare to battle the Goblins, with {attack} power!")
-                    if attack > 7:
-                        print("You have defeated the Goblins")
-                    else:
-                        print("The Goblins have smashed you to pieces!")
-                        break    
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 20))
+                        print(f"You prepare to battle the Goblins, with {attack} power!")
+                        if attack > 7:
+                            player.lives +=1
+                            print("You have defeated the Goblins")
+                            break                                  
+                        else:
+                            player.lives -=1
+                            print("The Goblins have injured you with their knives!")
+                    
+                    print(f"You have {player.lives} lives left!")        
+                    
+                    if player.lives  == 0:
+                        print("The Goblins have smashed you to pieces!")                       
+                        break 
+
+
                 elif player.room.name == "Narrow Passage":
-                    attack = (random.randint(0, 25))
-                    print(f"You prepare to battle the lurking mummies, with {attack} power!")
-                    if attack > 10:
-                        print("You have defeated the Mummies!")
-                    else:
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 25))
+                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        if attack > 10:
+                            player.lives +=1
+                            print("You have defeated the Mummies!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The mummies have begun to mummify you!")
+                    
+                    print(f"You have {player.lives} lives left!")
+                    
+                    if player.lives  == 0:
                         print("The mummies have entombed you for eternity!")
-                        break  
+                                           
+                        break 
+
                 elif player.room.name == "Treasure Chamber":
-                    attack = (random.randint(0, 50))
-                    print(f"You prepare to battle the giant beast, with {attack} power!")
-                    if attack >= 35:
-                        print("You have defeated the Dragon!")
-                    else:
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 50))
+                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        if attack >= 35:
+                            player.lives +=1
+                            print("You have defeated the Dragon!")
+                            break 
+                        else:
+                            player.lives -=1
+                            print("The monstrous claws of the red beast descend upon your head!")
+
+                    print(f"You have {player.lives} lives left!")     
+                    
+                    if player.lives  == 0:
                         print("Fire reigns down upon your head, you have been engulfed in flames!")
-                        break  
+                                           
+                        break 
+
+
+                elif player.room.name == "Narrow Passage":
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 25))
+                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        if attack > 10:
+                            player.lives +=1
+                            print("You have defeated the Mummies!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The mummies have entombed you for eternity!")
+                    
+                    print(f"You have {player.lives} lives left!")
+                    if player.lives  == 0:
+                                           
+                        break 
+
+                elif player.room.name == "Treasure Chamber":
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 50))
+                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        if attack >= 35:
+                            player.lives +=1
+                            print("You have defeated the Dragon!")
+                            break 
+                        else:
+                            player.lives -=1
+                            print("Fire reigns down upon your head, you have been engulfed in flames!")
+
+                    print(f"You have {player.lives} lives left!")     
+                    if player.lives  == 0:
+                                           
+                        break    
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
             
@@ -329,37 +520,107 @@ while True:
                 print('----------------------------------------')
 
                 if player.room.name  == "Foyer":
-                    attack = (random.randint(0, 10))
-                    print(f"You prepare to battle the snakes, with {attack} power!")
-                    if attack >= 2:
-                        print("You have defeated the Snakes, you may continue on!")
-                    else:
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 10))
+                        print(f"You prepare to battle the snakes, with {attack} power!")
+                        if attack >= 2:
+                            player.lives +=1
+                            print("You have defeated the Snakes, you may continue on!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The snakes have bitten you!")
+                    
+                    print(f"You have {player.lives} lives left!")
+                    
+                    if player.lives  == 0:
                         print("You have died to a few wimpy snakes!")
-                        break     
+
+                        break 
+
                 elif player.room.name == "Grand Overlook":
-                    attack = (random.randint(0, 20))
-                    print(f"You prepare to battle the Goblins, with {attack} power!")
-                    if attack > 7:
-                        print("You have defeated the Goblins")
-                    else:
-                        print("The Goblins have smashed you to pieces!")
-                        break    
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 20))
+                        print(f"You prepare to battle the Goblins, with {attack} power!")
+                        if attack > 7:
+                            player.lives +=1
+                            print("You have defeated the Goblins")
+                            break                                  
+                        else:
+                            player.lives -=1
+                            print("The Goblins have injured you with their knives!")
+                    
+                    print(f"You have {player.lives} lives left!")        
+                    
+                    if player.lives  == 0:
+                        print("The Goblins have smashed you to pieces!")                       
+                        break 
+
+
                 elif player.room.name == "Narrow Passage":
-                    attack = (random.randint(0, 25))
-                    print(f"You prepare to battle the lurking mummies, with {attack} power!")
-                    if attack > 10:
-                        print("You have defeated the Mummies!")
-                    else:
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 25))
+                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        if attack > 10:
+                            player.lives +=1
+                            print("You have defeated the Mummies!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The mummies have begun to mummify you!")
+                    
+                    print(f"You have {player.lives} lives left!")
+                    
+                    if player.lives  == 0:
                         print("The mummies have entombed you for eternity!")
-                        break  
+                                           
+                        break 
+
                 elif player.room.name == "Treasure Chamber":
-                    attack = (random.randint(0, 50))
-                    print(f"You prepare to battle the giant beast, with {attack} power!")
-                    if attack >= 35:
-                        print("You have defeated the Dragon!")
-                    else:
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 50))
+                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        if attack >= 35:
+                            player.lives +=1
+                            print("You have defeated the Dragon!")
+                            break 
+                        else:
+                            player.lives -=1
+                            print("The monstrous claws of the red beast descend upon your head!")
+
+                    print(f"You have {player.lives} lives left!")     
+                    
+                    if player.lives  == 0:
                         print("Fire reigns down upon your head, you have been engulfed in flames!")
-                        break  
+                                           
+                        break 
+
+                elif player.room.name == "Treasure Chamber":
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 50))
+                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        if attack >= 35:
+                            player.lives +=1
+                            print("You have defeated the Dragon!")
+                            break 
+                        else:
+                            player.lives -=1
+                            print("Fire reigns down upon your head, you have been engulfed in flames!")
+
+                    print(f"You have {player.lives} lives left!")     
+                    if player.lives  == 0:
+                                           
+                        break     
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
             
@@ -401,39 +662,128 @@ while True:
                 print(f" {player.room.enemies}")
                 print('----------------------------------------')
 
-                if player.room.enemies  == ["Snakes...why did it have to be snakes?"]:
+                if player.room.name  == "Foyer":
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 10))
+                        print(f"You prepare to battle the snakes, with {attack} power!")
+                        if attack >= 2:
+                            player.lives +=1
+                            print("You have defeated the Snakes, you may continue on!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The snakes have bitten you!")
                     
-                    attack = (random.randint(0, 10))
-                    print(f"You prepare to battle the snakes, with {attack} power!")
-                    if attack >= 2:
-                        print("You have defeated the Snakes, you may continue on!")
-                    else:
+                    print(f"You have {player.lives} lives left!")
+                    
+                    if player.lives  == 0:
                         print("You have died to a few wimpy snakes!")
-                        break     
-                elif player.room.enemies == ["Out of nowhere come three scary goblins"]:
-                    attack = (random.randint(0, 20))
-                    print(f"You prepare to battle the Goblins, with {attack} power!")
-                    if attack > 7:
-                        print("You have defeated the Goblins")
-                    else:
-                        print("The Goblins have smashed you to pieces!")
-                        break    
-                elif player.room.enemies == ["A group of Mummies lumber towards you"]:
-                    attack = (random.randint(0, 25))
-                    print(f"You prepare to battle the lurking mummies, with {attack} power!")
-                    if attack > 10:
-                        print("You have defeated the Mummies!")
-                    else:
+
+                        break 
+
+                elif player.room.name == "Grand Overlook":
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 20))
+                        print(f"You prepare to battle the Goblins, with {attack} power!")
+                        if attack > 7:
+                            player.lives +=1
+                            print("You have defeated the Goblins")
+                            break                                  
+                        else:
+                            player.lives -=1
+                            print("The Goblins have injured you with their knives!")
+                    
+                    print(f"You have {player.lives} lives left!")        
+                    
+                    if player.lives  == 0:
+                        print("The Goblins have smashed you to pieces!")                       
+                        break 
+
+
+                elif player.room.name == "Narrow Passage":
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 25))
+                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        if attack > 10:
+                            player.lives +=1
+                            print("You have defeated the Mummies!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The mummies have begun to mummify you!")
+                    
+                    print(f"You have {player.lives} lives left!")
+                    
+                    if player.lives  == 0:
                         print("The mummies have entombed you for eternity!")
-                        break  
-                elif player.room.enemies == ["A giant Red Dragon approaches"]:
-                    attack = (random.randint(0, 50))
-                    print(f"You prepare to battle the giant beast, with {attack} power!")
-                    if attack >= 35:
-                        print("You have defeated the Dragon!")
-                    else:
+                                           
+                        break 
+
+                elif player.room.name == "Treasure Chamber":
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 50))
+                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        if attack >= 35:
+                            player.lives +=1
+                            print("You have defeated the Dragon!")
+                            break 
+                        else:
+                            player.lives -=1
+                            print("The monstrous claws of the red beast descend upon your head!")
+
+                    print(f"You have {player.lives} lives left!")     
+                    
+                    if player.lives  == 0:
                         print("Fire reigns down upon your head, you have been engulfed in flames!")
-                        break  
+                                           
+                        break 
+
+
+                elif player.room.name == "Narrow Passage":
+                    while player.lives > 0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+                        
+                        attack = (random.randint(0, 25))
+                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        if attack > 10:
+                            player.lives +=1
+                            print("You have defeated the Mummies!")
+                            break
+                        else:
+                            player.lives -=1
+                            print("The mummies have entombed you for eternity!")
+                    
+                    print(f"You have {player.lives} lives left!")
+                    if player.lives  == 0:
+                                           
+                        break 
+
+                elif player.room.name == "Treasure Chamber":
+                    while player.lives >0:
+                        print(f"You have {player.lives} lives, let the battle begin!")
+
+                        attack = (random.randint(0, 50))
+                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        if attack >= 35:
+                            player.lives +=1
+                            print("You have defeated the Dragon!")
+                            break 
+                        else:
+                            player.lives -=1
+                            print("Fire reigns down upon your head, you have been engulfed in flames!")
+
+                    print(f"You have {player.lives} lives left!")     
+                    if player.lives  == 0:
+                                           
+                        break   
 
             print(f"You find {player.room.item}")
             item_choice = input("Which item will you pickup?: \n")
