@@ -1,7 +1,7 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
 from room import Room 
-
+import random
 
 class Player:
     def __init__(self, name, level,  defense, magic_level,  room, item=[]):
@@ -15,7 +15,7 @@ class Player:
         # self.lives = 0
         self.defense = defense
         # self.fortune = fortune
-        self.canfly = False 
+         
     def __str__(self):
         return str(self.__class__) + ": " + str(self.__dict__)  
 
@@ -74,8 +74,6 @@ class Player:
             Player.attack = Player.attack * 1.2
         if "Wand of Death" in self.item:
             Player.magic_attack = Player.magic_attack * 1.2
-        if "Broomstick" in self.item:
-            Player.canfly=True 
         if "Glowing Candle" in self.item:
             Player.magic_level = Player.magic_level * 1.1
         if "Enchanted Staff" in self.item:
@@ -83,12 +81,9 @@ class Player:
         if "Boomerang" in self.item:
             Player.attack = Player.attack * 1.11
         if "Broomstick" in self.item:
-            Player.canfly = True 
+            
             print("You can fly!!!")         
 
-        
-
-   
-
+    
 
 
