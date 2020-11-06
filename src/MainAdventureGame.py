@@ -63,7 +63,8 @@ room['Wizard training room'].w_to = room['Magical Entrance']
 
 
 
-Link = Player(name='Link', level=1, lives=10, magic_level=1, room=room["outside"], item=[] ) 
+Link = Player(name='Link', level=1, attack = 1, fortune=1, magic_attack = 1, defense=1, lives=10, magic_level=1, \
+    room=room["outside"], item=[] ) 
 #print(Link)
 
 
@@ -75,10 +76,44 @@ print(f"Welcome {player.name}")
 
 while True:
 
+
+    player.attack = 1
+    player.magic_attack = 1
+    player.defense = 1
+    
+
+
+    if "Body Armor" in player.item:
+        player.lives = player.lives * 1.1
+    if "sword" in player.item:
+        player.attack = player.attack * 1.1
+    if "helmet" in player.item:
+        player.defense = player.defense * 1.1  
+    if "bomb" in player.item:
+        player.attack = player.attack * 1.15
+    if "bow" and "arrows" in player.item:
+        player.attack = player.attack * 1.3
+    if "diamond" in player.item:
+        player.fortune = player.fortune * 1.1
+    if "Arkenstone" in player.item:
+        player.magic_attack = player.magic_attack * 1.2
+    if "Spear" in player.item:
+        player.attack = player.attack * 1.2
+    #Continue here            
+
+
+
+
+
+
+
+
+
     player.lives = round((player.lives * player.level * player.magic_level),1)
     print(f"Your current level is {round(player.level, 1)}, your current magic level is {round(player.magic_level,1)}")
     print(f"You currently have {player.lives} lives left.")
-
+    print(f"Your current attack is {round(player.attack,1)}, your current magic attack is {round(player.magic_attack,1)}")
+    print(f"Your current defense is {round(player.defense,1)}")
 
     print('----------------------------------------')
     users_choice = input("Please choose north, east, west, south, or magic: ")
@@ -91,6 +126,7 @@ while True:
     if users_choice == "north":
         if player.room.n_to is not None:
             player.room = player.room.n_to
+    
             print(player.room.description)
             print('----------------------------------------')
             if len(player.room.enemies) >=1:
@@ -101,8 +137,8 @@ while True:
                     while player.lives > 0:
                         print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 10))
-                        print(f"You prepare to battle the snakes, with {attack} power!")
+                        attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
+                        print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
                         if attack >= 2:
                             player.lives +=1
                             player.level +=.02
@@ -123,8 +159,8 @@ while True:
                     while player.lives >0:
                         print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 20))
-                        print(f"You prepare to battle the Goblins, with {attack} power!")
+                        attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
+                        print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
                         if attack > 7:
                             player.lives +=1
                             player.level +=.04
@@ -146,8 +182,8 @@ while True:
                     while player.lives > 0:
                         print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 25))
-                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
+                        print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
                         if attack > 10:
                             player.lives +=1
                             player.level +=.06
@@ -168,8 +204,8 @@ while True:
                     while player.lives >0:
                         print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 50))
-                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
+                        print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
                         if attack >= 35:
                             player.lives +=1
                             player.level +=.1
@@ -239,8 +275,8 @@ while True:
                     while player.lives > 0:
                         print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 10))
-                        print(f"You prepare to battle the snakes, with {attack} power!")
+                        attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
+                        print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
                         if attack >= 2:
                             player.lives +=1
                             player.level +=.02
@@ -261,8 +297,8 @@ while True:
                     while player.lives >0:
                         print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 20))
-                        print(f"You prepare to battle the Goblins, with {attack} power!")
+                        attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
+                        print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
                         if attack > 7:
                             player.lives +=1
                             player.level +=.04
@@ -284,8 +320,8 @@ while True:
                     while player.lives > 0:
                         print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 25))
-                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
+                        print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
                         if attack > 10:
                             player.lives +=1
                             player.level +=.06
@@ -306,8 +342,8 @@ while True:
                     while player.lives >0:
                         print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 50))
-                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
+                        print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
                         if attack >= 35:
                             player.lives +=1
                             player.level +=.1
@@ -377,8 +413,8 @@ while True:
                     while player.lives > 0:
                         print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 10))
-                        print(f"You prepare to battle the snakes, with {attack} power!")
+                        attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
+                        print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
                         if attack >= 2:
                             player.lives +=1
                             player.level +=.02
@@ -399,8 +435,8 @@ while True:
                     while player.lives >0:
                         print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 20))
-                        print(f"You prepare to battle the Goblins, with {attack} power!")
+                        attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
+                        print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
                         if attack > 7:
                             player.lives +=1
                             player.level +=.04
@@ -422,8 +458,8 @@ while True:
                     while player.lives > 0:
                         print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 25))
-                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
+                        print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
                         if attack > 10:
                             player.lives +=1
                             player.level +=.06
@@ -444,8 +480,8 @@ while True:
                     while player.lives >0:
                         print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 50))
-                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
+                        print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
                         if attack >= 35:
                             player.lives +=1
                             player.level +=.1
@@ -507,8 +543,8 @@ while True:
                     while player.lives > 0:
                         print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 10))
-                        print(f"You prepare to battle the snakes, with {attack} power!")
+                        attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
+                        print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
                         if attack >= 2:
                             player.lives +=1
                             player.level +=.02
@@ -529,8 +565,8 @@ while True:
                     while player.lives >0:
                         print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 20))
-                        print(f"You prepare to battle the Goblins, with {attack} power!")
+                        attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
+                        print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
                         if attack > 7:
                             player.lives +=1
                             player.level +=.04
@@ -552,8 +588,8 @@ while True:
                     while player.lives > 0:
                         print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 25))
-                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
+                        print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
                         if attack > 10:
                             player.lives +=1
                             player.level +=.06
@@ -574,8 +610,8 @@ while True:
                     while player.lives >0:
                         print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 50))
-                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
+                        print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
                         if attack >= 35:
                             player.lives +=1
                             player.level +=.1
@@ -639,8 +675,8 @@ while True:
                     while player.lives > 0:
                         print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 10))
-                        print(f"You prepare to battle the snakes, with {attack} power!")
+                        attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
+                        print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
                         if attack >= 2:
                             player.lives +=1
                             player.level +=.02
@@ -661,8 +697,8 @@ while True:
                     while player.lives >0:
                         print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 20))
-                        print(f"You prepare to battle the Goblins, with {attack} power!")
+                        attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
+                        print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
                         if attack > 7:
                             player.lives +=1
                             player.level +=.04
@@ -684,8 +720,8 @@ while True:
                     while player.lives > 0:
                         print(f"You have {player.lives} lives, let the battle begin!")
                         
-                        attack = (random.randint(0, 25))
-                        print(f"You prepare to battle the lurking mummies, with {attack} power!")
+                        attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
+                        print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
                         if attack > 10:
                             player.lives +=1
                             player.level +=.06
@@ -706,8 +742,8 @@ while True:
                     while player.lives >0:
                         print(f"You have {player.lives} lives, let the battle begin!")
 
-                        attack = (random.randint(0, 50))
-                        print(f"You prepare to battle the giant beast, with {attack} power!")
+                        attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
+                        print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
                         if attack >= 35:
                             player.lives +=1
                             player.level +=.1
