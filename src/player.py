@@ -35,7 +35,7 @@ class Player:
         Player.magic_attack = 1    
         Player.defense = 1 
         Player.magic_level = 1
-        
+
         difficulty_levels = ["easy", "medium", "hard", "expert"]
         difficulty_multiplier = [1.3, 1.0, .8, .6]
         difficulty_dict = dict(zip(difficulty_levels, difficulty_multiplier))
@@ -53,7 +53,7 @@ class Player:
         if "helmet" in self.item:
             Player.defense = Player.defense * 1.1  
         if "bomb" in self.item:
-            Player.attack = Player.attack * 1.15
+            Player.attack = Player.attack * 1.1
         if "bow" in self.item:
             Player.attack = Player.attack * 1.1
         if "arrows" in self.item:
@@ -61,27 +61,30 @@ class Player:
         if "diamond" in self.item:
             Player.fortune = Player.fortune * 1.1
         if "Arkenstone" in self.item:
-            Player.magic_attack = Player.magic_attack * 1.2
+            Player.magic_attack = Player.magic_attack * 1.15
         if "Spear" in self.item:
-            Player.attack = Player.attack * 1.2
+            Player.attack = Player.attack * 1.1
         if "Ocarina" in self.item:
-            Player.magic_level = Player.magic_level * 1.2
+            Player.magic_level = Player.magic_level * 1.15
         if "Bag of marbles" in self.item:
             Player.fortune = Player.fortune * 1.1
         if "Magic Cloak" in self.item:
-            Player.magic_attack = Player.magic_attack * 1.15
+            Player.magic_attack = Player.magic_attack * 1.1
         if "Crystal Sword" in self.item:
-            Player.attack = Player.attack * 1.3
+            Player.attack = Player.attack * 1.2
         if "Wand of Death" in self.item:
-            Player.magic_attack = Player.magic_attack * 1.3
+            Player.magic_attack = Player.magic_attack * 1.2
         if "Broomstick" in self.item:
             Player.canfly=True 
         if "Glowing Candle" in self.item:
             Player.magic_level = Player.magic_level * 1.1
         if "Enchanted Staff" in self.item:
-            Player.magic_attack = Player.magic_attack * 1.25
+            Player.magic_attack = Player.magic_attack * 1.2
         if "Boomerang" in self.item:
-            Player.attack = Player.attack * 1.15     
+            Player.attack = Player.attack * 1.11
+        if "Broomstick" in self.item:
+            Player.canfly = True 
+            print("You can fly!!!")         
 
         
 

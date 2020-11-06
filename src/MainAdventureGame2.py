@@ -62,12 +62,12 @@ room['Wizard training room'].w_to = room['Magical Entrance']
 
 
 
+User_name = input("Please enter your name: \n")
 
-
-Link = Player(name='Link', level=1, defense=1,  magic_level=1, \
+player = Player(name=User_name, level=1, defense=1,  magic_level=1, \
     room=room["outside"], item=[] ) 
 
-player = Link
+
 print(f"Welcome {player.name}")
 difficulty_choice = input("Please choose easy, medium, hard, or expert: \n")
 player.set_lives(difficulty_choice)
