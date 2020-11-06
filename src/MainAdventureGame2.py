@@ -74,16 +74,18 @@ player.set_lives(difficulty_choice)
 
 while True:
     #Set attributes at start of every battle
+    print('----------------------------------------')
     player.set_player_attributes(difficulty_choice)
 
     #lives, level, and magic level are based on experience and defeating monsters, they can not reset
     # player.lives = round((player.lives * player.level * player.magic_level),1)
     print(f"Your current level is {round(player.level, 1)}, your current magic level is {round(player.magic_level,1)}")
-    print(f"You currently have {player.lives} lives left.")
-    print(f"Your current attack is {round(player.attack,1)}, your current magic attack is {round(player.magic_attack,1)}")
-    print(f"Your current defense is {round(player.defense,1)}")
-
     print('----------------------------------------')
+    print(f"You currently have {player.lives} lives left.")
+    print('----------------------------------------')
+    print(f"Your current attack is {round(player.attack,1)}, your current magic attack is {round(player.magic_attack,1)}")
+    print('----------------------------------------')
+   
     users_choice = input("Please choose north, east, west, south, or magic: ")
     print('----------------------------------------')
     
@@ -117,13 +119,13 @@ while True:
                             if attack >= 4:
                                 player.lives +=1
                                 player.level +=.02
-                                print("You have defeated the Snakes, you may continue on!")
+                                print(f"You have defeated the Snakes with {player.lives} lives left, you may continue on!")
+                                print('----------------------------------------')
                                 break
                             else:
                                 player.lives -=1
                                 print("The snakes have bitten you!")
-                        
-                        print(f"You have {player.lives} lives left!")
+                                                
                         #check to see if player died during battle
                         if player.lives  <= 0:
                             print("You have died to a few wimpy snakes!")
@@ -140,14 +142,14 @@ while True:
                                 player.lives +=1
                                 player.level +=.04
                                 player.magic_level +=.02
-                                print("You have defeated the Goblins")
+                                print(f"You have defeated the Goblins with {player.lives} lives left!")
+                                print('----------------------------------------')
                                 break                                  
                             else:
                                 player.lives -=1
                                 print("The Goblins have injured you with their knives!")
                         
-                        print(f"You have {player.lives} lives left!")        
-                        
+                                                
                         if player.lives  <= 0:
                             print("The Goblins have smashed you to pieces!")                       
                             break 
@@ -162,14 +164,14 @@ while True:
                             if attack > 15:
                                 player.lives +=1
                                 player.level +=.06
-                                print("You have defeated the Mummies!")
+                                print(f"You have defeated the Mummies with {player.lives} lives left!")
+                                print('----------------------------------------')
                                 break
                             else:
                                 player.lives -=1
                                 print("The mummies have begun to mummify you!")
                         
-                        print(f"You have {player.lives} lives left!")
-                        
+                                                
                         if player.lives  <= 0:
                             print("The mummies have entombed you for eternity!")
                                             
@@ -185,14 +187,13 @@ while True:
                                 player.lives +=1
                                 player.level +=.1
                                 player.magic_level +=.08
-                                print("You have defeated the Dragon!")
+                                print(f"You have defeated the Dragon with {player.lives} lives left!")
+                                print('----------------------------------------')
                                 break 
                             else:
                                 player.lives -=1
                                 print("The monstrous claws of the red beast descend upon your head!")
-
-                        print(f"You have {player.lives} lives left!")     
-                        
+                                                
                         if player.lives  <= 0:
                             print("Fire reigns down upon your head, you have been engulfed in flames!")
                                             
@@ -207,18 +208,66 @@ while True:
                                 player.lives +=1
                                 player.level +=.15
                                 player.magic_level +=.15
-                                print("You have defeated the wretched monstrosity!")
+                                print(f"You have defeated the wretched monstrosity with {player.lives} lives left!")
+                                print('----------------------------------------')
                                 break 
                             else:
                                 player.lives -=1
                                 print("The spider has you trapped in her web!")
-
-                        print(f"You have {player.lives} lives left!")     
+                       
                         
                         if player.lives  <= 0:
                             print("The spider feasts upon your flesh!")
-                                            
                             break    
+                   
+                    elif player.room.name == "Cauldron Room":
+                        
+                        while player.lives >0:
+                            
+                            print(f"You have {player.lives} lives, let the battle begin!")
+                            attack = (random.randint(0,150)) * player.attack * player.magic_attack * player.defense 
+                            print(f"You prepare to battle the Wicked Witch, with {round(attack,1)} power!")
+                            
+                            if attack >= 140:
+                                player.lives +=1
+                                player.level +=.2
+                                player.magic_level +=.2
+                                print(f"You have defeated the wretched monstrosity with {player.lives} lives left!")
+                                print('----------------------------------------')
+                                break 
+                            else:
+                                player.lives -=1
+                                print("The witch has poisoned you with her dark magic!")
+                       
+                        
+                        if player.lives  <= 0:
+                            print("The witch has thrown you in her cauldron, and there you will stay!")
+                            break 
+
+                    elif player.room.name == "Wizard Training Room":
+
+                        while player.lives >0:
+                            
+                            print(f"You have {player.lives} lives, let the battle begin!")
+                            attack = (random.randint(0,200)) * player.attack * player.magic_attack * player.defense 
+                            print(f"You prepare to battle the mighty wizard, with {round(attack,1)} power!")
+                            
+                            if attack >= 185:
+                                player.lives +=1
+                                player.level +=.25
+                                player.magic_level +=.25
+                                print(f"You have defeated the conjurer of doom with {player.lives} lives left!")
+                                print('----------------------------------------')
+                                break 
+                            else:
+                                player.lives -=1
+                                print("The wizard has hit you with a fireball!")
+                       
+                        
+                        if player.lives  <= 0:
+                            print("The wizard has incinerated you with his unending barrage of death!")
+                            break 
+
 
 
 
