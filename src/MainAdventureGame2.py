@@ -64,7 +64,7 @@ room['Wizard training room'].w_to = room['Magical Entrance']
 
 
 
-Link = Player(name='Link', level=1, attack = 1,  fortune=1, magic_attack = 1, defense=1,  magic_level=1, \
+Link = Player(name='Link', level=1, defense=1,  magic_level=1, \
     room=room["outside"], item=[] ) 
 
 player = Link
@@ -73,57 +73,8 @@ difficulty_choice = input("Please choose easy, medium, hard, or expert: \n")
 player.set_lives(difficulty_choice)
 
 while True:
-
-    #based on inventory, so they must reset to 1 before entering a new room in case inventory changes
-    player.attack = 1
-    player.magic_attack = 1
-    player.defense = 1
-    
-
-
-    if "Body Armor" in player.item:
-        player.lives = player.lives * 1.1
-    if "sword" in player.item:
-        player.attack = player.attack * 1.1
-    if "helmet" in player.item:
-        player.defense = player.defense * 1.1  
-    if "bomb" in player.item:
-        player.attack = player.attack * 1.15
-    if "bow" and "arrows" in player.item:
-        player.attack = player.attack * 1.3
-    if "diamond" in player.item:
-        player.fortune = player.fortune * 1.1
-    if "Arkenstone" in player.item:
-        player.magic_attack = player.magic_attack * 1.2
-    if "Spear" in player.item:
-        player.attack = player.attack * 1.2
-    if "Ocarina" in player.item:
-        player.magic_level = player.magic_level * 1.2
-    if "Bag of marbles" in player.item:
-        player.fortune = player.fortune * 1.1
-    if "Magic Cloak" in player.item:
-        player.magic_attack = player.magic_attack * 1.15
-    if "Crystal Sword" in player.item:
-        player.attack = player.attack * 1.3
-    if "Wand of Death" in player.item:
-        player.magic_attack = player.magic_attack * 1.3
-    if "Broomstick" in player.item:
-        player.canfly=True 
-    if "Glowing Candle" in player.item:
-        player.magic_level = player.magic_level * 1.1
-    if "Enchanted Staff" in player.item:
-        player.magic_attack = player.magic_attack * 1.25
-    if "Boomerang" in player.item:
-        player.attack = player.attack * 1.15            
-                                
-    #Continue here            
-
-
-
-
-
-
-
+    #Set attributes at start of every battle
+    player.set_player_attributes(difficulty_choice)
 
     #lives, level, and magic level are based on experience and defeating monsters, they can not reset
     # player.lives = round((player.lives * player.level * player.magic_level),1)
@@ -163,7 +114,7 @@ while True:
                             #attack is improved based on your inventory which improves attributes
                             attack = (random.randint(0, 10)) * player.attack * player.magic_attack * player.defense
                             print(f"You prepare to battle the snakes, with {round(attack,1)} power!")
-                            if attack >= 2:
+                            if attack >= 4:
                                 player.lives +=1
                                 player.level +=.02
                                 print("You have defeated the Snakes, you may continue on!")
@@ -185,7 +136,7 @@ while True:
 
                             attack = (random.randint(0, 20)) * player.attack * player.magic_attack * player.defense
                             print(f"You prepare to battle the Goblins, with {round(attack,1)} power!")
-                            if attack > 7:
+                            if attack > 12:
                                 player.lives +=1
                                 player.level +=.04
                                 player.magic_level +=.02
@@ -208,7 +159,7 @@ while True:
                             
                             attack = (random.randint(0, 25)) * player.attack * player.magic_attack * player.defense 
                             print(f"You prepare to battle the lurking mummies, with {round(attack,1)} power!")
-                            if attack > 10:
+                            if attack > 15:
                                 player.lives +=1
                                 player.level +=.06
                                 print("You have defeated the Mummies!")
@@ -230,7 +181,7 @@ while True:
 
                             attack = (random.randint(0, 50)) * player.attack * player.magic_attack * player.defense 
                             print(f"You prepare to battle the giant beast, with {round(attack,1)} power!")
-                            if attack >= 35:
+                            if attack >= 40:
                                 player.lives +=1
                                 player.level +=.1
                                 player.magic_level +=.08
